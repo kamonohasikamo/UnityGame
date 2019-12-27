@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public float maxHeight;
     public float flapVelocity;
     int Ccount = 0;
+    int redCount = 0;
+    int blueCount = 0;
+    int greenCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +27,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if(Input.GetButtonDown("Fire1") && transform.position.y < maxHeight)
-        {
-            Flap();
-        }*/
+
     }
 
     public void onClickAct()
@@ -36,18 +36,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < maxHeight)
         {
            
-                if (Ccount == 0)
-                {
-                    gameObject.GetComponent<Renderer>().material.color = Color.red;
-                }else if(Ccount == 1)
-                {
-                    gameObject.GetComponent<Renderer>().material.color = Color.blue;
-                }else if(Ccount == 2)
-                {
-                    gameObject.GetComponent<Renderer>().material.color = Color.green;
-                }
-            Ccount++;
-            Ccount %= 3;
+
             Flap();
         }
 
@@ -56,5 +45,30 @@ public class PlayerController : MonoBehaviour
     public void Flap()
     {
         rb2d.velocity = new Vector2(0.0f, flapVelocity);
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "ColorItemRed")
+        {
+            Destroy(col.gameObject);
+            redCount = GameManager.instance.getPlayerHaveRedCount();
+            redCount++;
+            GameManager.instance.setPlayerHaveRedCount(redCount);
+        }
+        else if (col.gameObject.tag == "ColorItemBlue")
+        {
+            Destroy(col.gameObject);
+            blueCount = GameManager.instance.getPlayerHaveBlueCount();
+            blueCount++;
+            GameManager.instance.setPlayerHaveBlueCount(blueCount);
+        }
+        else if (col.gameObject.tag == "ColorItemGreen")
+        {
+            Destroy(col.gameObject);
+            greenCount = GameManager.instance.getPlayerHaveGreenCount();
+            greenCount++;
+            GameManager.instance.setPlayerHaveGreenCount(greenCount);
+        }
     }
 }

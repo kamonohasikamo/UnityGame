@@ -16,6 +16,8 @@ public class ItemButtonController : MonoBehaviour
 	GameObject blueButton;
 	GameObject greenButton;
 
+    public GameObject player;
+
 	void Start()
 	{
 		redCount = 0;
@@ -30,30 +32,49 @@ public class ItemButtonController : MonoBehaviour
 	{
 		if (redCount <= 9)
 		{
-			redButton.GetComponentInChildren<Text>().text = "x" + redCount.ToString();
+			redButton.GetComponentInChildren<Text>().text = "x" + GameManager.instance.getPlayerHaveRedCount().ToString();
 		}
 		if (blueCount <= 9)
 		{
-			blueButton.GetComponentInChildren<Text>().text = "x" + blueCount.ToString();
+			blueButton.GetComponentInChildren<Text>().text = "x" + GameManager.instance.getPlayerHaveBlueCount().ToString();
 		}
 		if (greenCount <= 9)
 		{
-			greenButton.GetComponentInChildren<Text>().text = "x" + greenCount.ToString();
+			greenButton.GetComponentInChildren<Text>().text = "x" + GameManager.instance.getPlayerHaveGreenCount().ToString();
 		}
 	}
 
 	public void OnClickRedButton()
 	{
-		redCount++;
+        redCount = GameManager.instance.getPlayerHaveRedCount();
+  
+        if ( redCount > 0)
+        {
+            redCount--;
+            GameManager.instance.setPlayerHaveRedCount(redCount);
+            player.GetComponent<Renderer>().material.color = Color.red;
+        }
 	}
 
 	public void OnClickBlueButton()
 	{
-		blueCount++;
-	}
+        blueCount = GameManager.instance.getPlayerHaveBlueCount();
+        if (blueCount > 0)
+        {
+            blueCount--;
+            GameManager.instance.setPlayerHaveBlueCount(blueCount);
+            player.GetComponent<Renderer>().material.color = Color.blue;
+        }
+    }
 
 	public void OnClickGreenButton()
 	{
-		greenCount++;
-	}
+        greenCount = GameManager.instance.getPlayerHaveGreenCount();
+        if (greenCount > 0)
+        {
+            greenCount--;
+            GameManager.instance.setPlayerHaveGreenCount(greenCount);
+            player.GetComponent<Renderer>().material.color = Color.green;
+        }
+    }
 }
