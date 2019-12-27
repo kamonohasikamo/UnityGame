@@ -57,5 +57,4 @@ public class PlayerController : MonoBehaviour
     {
         rb2d.velocity = new Vector2(0.0f, flapVelocity);
     }
-
 }
