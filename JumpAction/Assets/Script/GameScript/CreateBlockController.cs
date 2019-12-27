@@ -15,16 +15,17 @@ public class CreateBlockController : MonoBehaviour
 	// ブロックの高さ格納用変数
 	int blockHeight;
 
+	// ランダムな色を格納する変数
+	int colorSelectRandom;
+
 	void Start()
 	{
 		gameInit();
 		for (int i = 0; i < GameManager.instance.getMaxWave(); i++)
 		{
-			int colorSelectRandom = randamVariable.Next(0, 3);
+			colorSelectRandom = randamVariable.Next(0, 3);
 			createBlock(colorSelectRandom, i);
-			GameManager.instance.setOneIsWaveMoving(i, false);
 		}
-		GameManager.instance.setOneIsWaveMoving(0, true);
 	}
 
 	void gameInit()
@@ -33,12 +34,25 @@ public class CreateBlockController : MonoBehaviour
 		GameManager.instance.setBlockMaxHeight(8);
 		GameManager.instance.setMaxWave(5);
 		GameManager.instance.setWaveMoveSpeed(1.0f);
+		GameManager.instance.setMovingBlock(0);
 	}
 
 
 	void Update()
 	{
-		parentBlock[0].transform.Translate(-1 * GameManager.instance.getWaveMoveSpeed() * Time.deltaTime, 0, 0);
+		parentBlock[((GameManager.instance.getMovingBlock()) % 5)].transform.Translate(-1 * GameManager.instance.getWaveMoveSpeed() * Time.deltaTime, 0, 0);
+		if (parentBlock[((GameManager.instance.getMovingBlock()) % 5)].transform.position.x < -2)
+		{
+			parentBlock[((GameManager.instance.getMovingBlock() + 1) % 5)].transform.Translate(-1 * GameManager.instance.getWaveMoveSpeed() * Time.deltaTime, 0, 0);
+		}
+		if (parentBlock[((GameManager.instance.getMovingBlock()) % 5)].transform.position.x < -12.5)
+		{
+			Destroy(parentBlock[((GameManager.instance.getMovingBlock()) % 5)]);
+			colorSelectRandom = randamVariable.Next(0, 3);
+			createBlock(colorSelectRandom, ((GameManager.instance.getMovingBlock()) % 5));
+			GameManager.instance.setMovingBlock(GameManager.instance.getMovingBlock() + 1);
+			
+		}
 	}
 
 	void createBlock(int colorSelect, int waveNum)

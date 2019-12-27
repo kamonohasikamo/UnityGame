@@ -66,27 +66,17 @@ public class GameManager : MonoBehaviour
 		maxWave = setValue;
 	}
 
-	// 各waveが進んでいいかどうかのFlag 
-	public static bool[] isWaveMoving = new bool[maxWave];
-	
-	public bool[] getIsWaveMoving()
+	// 今動いているブロックを管理
+	public static int movingBlock;
+
+	public int getMovingBlock()
 	{
-		return isWaveMoving;
+		return movingBlock;
 	}
 
-	public bool getOneIsWaveMoving(int getPoint)
+	public void setMovingBlock(int setValue)
 	{
-		return isWaveMoving[getPoint];
-	}
-
-	public void setOneIsWaveMoving(int setPoint, bool setFlag)
-	{
-		isWaveMoving[setPoint] = setFlag; 
-	}
-
-	public void setIsWaveMoving(bool[] setFlags)
-	{
-		isWaveMoving = setFlags;
+		movingBlock = setValue;
 	}
 
 	// wave move speed
