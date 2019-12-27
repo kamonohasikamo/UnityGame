@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float maxHeight;
     public float flapVelocity;
+    int Ccount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,19 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y < maxHeight)
         {
+           
+                if (Ccount == 0)
+                {
+                    gameObject.GetComponent<Renderer>().material.color = Color.red;
+                }else if(Ccount == 1)
+                {
+                    gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                }else if(Ccount == 2)
+                {
+                    gameObject.GetComponent<Renderer>().material.color = Color.green;
+                }
+            Ccount++;
+            Ccount %= 3;
             Flap();
         }
 
