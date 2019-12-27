@@ -26,8 +26,22 @@ public class GameManager : MonoBehaviour
 	// use CreateBlockController variable
 	//=============================================
 
+	// Block の高さの最大値
+	public int blockMaxHeight = 8;
+
+	public int getBlockMaxHeight()
+	{
+		return blockMaxHeight;
+	}
+	
+	public void setBlockMaxHeight(int setValue)
+	{
+		blockMaxHeight = setValue;
+	}
+
+
 	// Block の横サイズ
-	public int blockHorizontalLength;
+	public int blockHorizontalLength = 10;
 	
 	public int getBlockHorizontalLength()
 	{
@@ -76,7 +90,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	// wave move speed
-	public static float waveMoveSpeed;
+	public static float waveMoveSpeed = 1.0f;
 
 	public float getWaveMoveSpeed()
 	{
@@ -91,7 +105,7 @@ public class GameManager : MonoBehaviour
 	//=============================================
 	// use ItemButtonController variable and more?
 	//=============================================
-	public static int playerHaveRedCount;
+	public static int playerHaveRedCount = 0;
 
 	public int getPlayerHaveRedCount()
 	{
@@ -103,7 +117,7 @@ public class GameManager : MonoBehaviour
 		playerHaveRedCount = setValue;
 	}
 
-	public static int playerHaveBlueCount;
+	public static int playerHaveBlueCount = 0;
 
 	public int getPlayerHaveBlueCount()
 	{
@@ -115,7 +129,7 @@ public class GameManager : MonoBehaviour
 		playerHaveBlueCount = setValue;
 	}
 
-	public static int playerHaveGreenCount;
+	public static int playerHaveGreenCount = 0;
 
 	public int getPlayerHaveGreenCount()
 	{
