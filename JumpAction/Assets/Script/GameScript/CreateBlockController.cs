@@ -33,7 +33,7 @@ public class CreateBlockController : MonoBehaviour
 		{0, "Item/ColorItemRed"},
 		{1, "Item/ColorItemBlue"},
 		{2, "Item/ColorItemGreen"},
-		{3, "Item/ColorItemRed"} // 回復アイテムのパスを入れる
+		{3, "Item/HealItem"} // 回復アイテムのパスを入れる
 	};
 
 	// 上部にセットするアイテムを格納する変数

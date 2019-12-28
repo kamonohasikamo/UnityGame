@@ -216,4 +216,29 @@ public class GameManager : MonoBehaviour
 	{
 		itemUseCount = setValue;
 	}
+
+    //HP
+    public static float playerHP = 100;
+
+    public float getPlayerHP()
+    {
+        return playerHP;
+    }
+
+    public void setPlayerHP(float setValue)
+    {
+        playerHP = setValue;
+    }
+
+    public static int healItemcount = 0;
+
+    public int getHealItemCount()
+    {
+        return healItemcount;
+    }
+
+    public void setHealItemCount(int setValue)
+    {
+        healItemcount = setValue;
+    }
 }

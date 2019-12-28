@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     int redCount = 0;
     int blueCount = 0;
     int greenCount = 0;
+    int healCount = 0;
     float flyTime = 0.0f;
     bool fly ;
 
@@ -73,6 +74,13 @@ public class PlayerController : MonoBehaviour
             greenCount = GameManager.instance.getPlayerHaveGreenCount();
             greenCount++;
             GameManager.instance.setPlayerHaveGreenCount(greenCount);
+        }
+        else if (col.gameObject.tag == "HealItem")
+        {
+            Destroy(col.gameObject);
+            healCount = GameManager.instance.getHealItemCount();
+            healCount++;
+            GameManager.instance.setHealItemCount(healCount);
         }
     }
 
