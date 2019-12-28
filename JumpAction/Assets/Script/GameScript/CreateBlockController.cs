@@ -55,6 +55,7 @@ public class CreateBlockController : MonoBehaviour
 		GameManager.instance.setMaxWave(5);
 		GameManager.instance.setWaveMoveSpeed(2.0f);
 		GameManager.instance.setMovingBlock(0);
+        GameManager.instance.setPlayerHP(100);
 		isSetBlockAbove = 0;
 		setColorRandomNum = 0;
 	}

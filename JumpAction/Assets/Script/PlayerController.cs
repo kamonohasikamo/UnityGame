@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,12 +16,27 @@ public class PlayerController : MonoBehaviour
     int healCount = 0;
     float flyTime = 0.0f;
     bool fly ;
+    int value;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         fly = true;
+        value = Random.Range(0, 3);
+        if(value == 0)
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
+        }
+        else if(value == 1)
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        }
+        else if(value == 2)
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.green;
+        }
     }
 
     void Awake()
@@ -31,10 +47,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 tmp = GameObject.Find("Player").transform.position;
         if (fly)
         {
             flyTime += Time.deltaTime;
             GameManager.instance.setPlayerFlyTime(flyTime);
+        }
+
+        if(tmp.x <= -3.5 || tmp.y <= -5.5)
+        {
+            SceneManager.LoadScene("Result");
         }
     }
 
