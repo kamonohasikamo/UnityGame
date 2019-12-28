@@ -22,11 +22,11 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-    void Update()
-    {
-        score = gameMinute * 60 + (int)gameSeconds + itemUseCount * 3 - (int)playerFlyTime;
+		void Update()
+		{
+				score = gameMinute * 60 + (int)gameSeconds + itemUseCount * 3 - (int)playerFlyTime;
 
-    }
+		}
 
 	//=============================================
 	// use CreateBlockController variable
@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
 
 	public float getWaveMoveSpeed()
 	{
+		Debug.Log("waveSpeed = " + waveMoveSpeed);
 		return waveMoveSpeed;
 	}
 
@@ -137,70 +138,82 @@ public class GameManager : MonoBehaviour
 		playerHaveGreenCount = setValue;
 	}
 
-    //タイマーの分と秒
-    //=============================================
-    // use TimerController variable and more?
-    //=============================================
-    public static int gameMinute = 0;
+	//タイマーの分と秒
+	//=============================================
+	// use TimerController variable and more?
+	//=============================================
+	public static int gameMinute = 0;
 
-    public int getGameMinute()
-    {
-        return gameMinute;
-    }
+	public int getGameMinute()
+	{
+		return gameMinute;
+	}
 
-    public void setGameMinute(int setValue)
-    {
-        gameMinute = setValue;
-    }
+	public void setGameMinute(int setValue)
+	{
+		gameMinute = setValue;
+	}
 
-    public static float gameSeconds = 0;
+	public static float gameSeconds = 0;
 
-    public float getGameSeconds()
-    {
-        return gameSeconds;
-    }
+	public float getGameSeconds()
+	{
+		return gameSeconds;
+	}
 
-    public void setGameSeconds(float setValue)
-    {
-        gameSeconds = setValue;
-    }
+	public void setGameSeconds(float setValue)
+	{
+		gameSeconds = setValue;
+	}
 
-    //スコア
-    public int score = 0;
+	public static int gameTotalSeconds = 0;
 
-    public int getScore()
-    {
-        return score;
-    }
+	public int getGameTotalSeconds()
+	{
+		return gameTotalSeconds;
+	}
 
-    public void setScore(int setValue)
-    {
-        score = setValue;
-    }
+	public void setGameTotalSeconds(int setValue)
+	{
+		gameTotalSeconds = setValue;
+	}
 
-    //浮遊時間
-    public static float playerFlyTime = 0.0f;
+	//スコア
+	public int score = 0;
 
-    public float getPlayerFlyTime()
-    {
-        return playerFlyTime;
-    }
+	public int getScore()
+	{
+		return score;
+	}
 
-    public void setPlayerFlyTime(float setValue)
-    {
-        playerFlyTime = setValue;
-    }
+	public void setScore(int setValue)
+	{
+		score = setValue;
+	}
 
-    //アイテムの使用回数
-    public static int itemUseCount = 0;
+	//浮遊時間
+	public static float playerFlyTime = 0.0f;
 
-    public int getItemUseCount()
-    {
-        return itemUseCount;
-    }
+	public float getPlayerFlyTime()
+	{
+		return playerFlyTime;
+	}
 
-    public void setItemUseCount(int setValue)
-    {
-        itemUseCount = setValue;
-    }
+	public void setPlayerFlyTime(float setValue)
+	{
+		playerFlyTime = setValue;
+	}
+
+	//アイテムの使用回数
+	public static int itemUseCount = 0;
+
+	public int getItemUseCount()
+	{
+		return itemUseCount;
+	}
+
+	public void setItemUseCount(int setValue)
+	{
+		itemUseCount = setValue;
+	}
 }
