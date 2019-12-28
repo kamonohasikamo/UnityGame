@@ -12,6 +12,8 @@ public class ItemButtonController : MonoBehaviour
 	[SerializeField]
 	int greenCount;
 
+    int useCount;
+
 	GameObject redButton;
 	GameObject blueButton;
 	GameObject greenButton;
@@ -23,6 +25,7 @@ public class ItemButtonController : MonoBehaviour
 		redCount = 0;
 		blueCount = 0;
 		greenCount = 0;
+        useCount = 0;
 		redButton = transform.GetChild(0).gameObject;
 		blueButton = transform.GetChild(1).gameObject;
 		greenButton = transform.GetChild(2).gameObject;
@@ -54,7 +57,10 @@ public class ItemButtonController : MonoBehaviour
             GameManager.instance.setPlayerHaveRedCount(redCount);
             player.GetComponent<Renderer>().material.color = Color.red;
         }
-	}
+        useCount++;
+        GameManager.instance.setItemUseCount(useCount);
+
+    }
 
 	public void OnClickBlueButton()
 	{
@@ -65,6 +71,8 @@ public class ItemButtonController : MonoBehaviour
             GameManager.instance.setPlayerHaveBlueCount(blueCount);
             player.GetComponent<Renderer>().material.color = Color.blue;
         }
+        useCount++;
+        GameManager.instance.setItemUseCount(useCount);
     }
 
 	public void OnClickGreenButton()
@@ -76,5 +84,7 @@ public class ItemButtonController : MonoBehaviour
             GameManager.instance.setPlayerHaveGreenCount(greenCount);
             player.GetComponent<Renderer>().material.color = Color.green;
         }
+        useCount++;
+        GameManager.instance.setItemUseCount(useCount);
     }
 }

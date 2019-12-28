@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour
     int redCount = 0;
     int blueCount = 0;
     int greenCount = 0;
+    float flyTime = 0.0f;
+    bool fly ;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        fly = true;
     }
 
     void Awake()
@@ -27,19 +30,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (fly)
+        {
+            flyTime += Time.deltaTime;
+            GameManager.instance.setPlayerFlyTime(flyTime);
+        }
     }
 
     public void onClickAct()
     {
-
         if (transform.position.y < maxHeight)
         {
-           
-
             Flap();
         }
-
     }
 
     public void Flap()
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
             redCount = GameManager.instance.getPlayerHaveRedCount();
             redCount++;
             GameManager.instance.setPlayerHaveRedCount(redCount);
+            Debug.Log("aaa");
         }
         else if (col.gameObject.tag == "ColorItemBlue")
         {
@@ -69,6 +73,22 @@ public class PlayerController : MonoBehaviour
             greenCount = GameManager.instance.getPlayerHaveGreenCount();
             greenCount++;
             GameManager.instance.setPlayerHaveGreenCount(greenCount);
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Block")
+        {
+            fly = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Block")
+        {
+            fly = true;
         }
     }
 }

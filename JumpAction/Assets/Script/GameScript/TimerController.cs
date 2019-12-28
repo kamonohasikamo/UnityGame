@@ -28,11 +28,18 @@ public class TimerController : MonoBehaviour
 
 	void Update()
 	{
+        minute = GameManager.instance.getGameMinute();
+        seconds = GameManager.instance.getGameSeconds();
 		seconds += Time.deltaTime;
+        GameManager.instance.setGameSeconds(seconds);
+
 		if (seconds >= 60f)
 		{
 			minute++;
 			seconds -= 60;
+            GameManager.instance.setGameMinute(minute);
+            GameManager.instance.setGameSeconds(seconds);
+
 		}
 		// 値が変わったときにUI変更
 		if ((int)seconds != (int)oldSeconds)
