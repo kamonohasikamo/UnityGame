@@ -39,8 +39,8 @@ public class RankingController : MonoBehaviour
 		// Scoreを端末に保存する
 		// 第一引数：保存名
 		// 第二引数：保存する値(SetIntなのでInt型限定)
-		// PlayerPrefabs.SetInt("5", );
-		// PlayerPrefabs.Save();
+		PlayerPrefs.SetInt("5", GameManager.instance.getScore());
+		PlayerPrefs.Save();
 	}
 
 	void showRanking()
@@ -48,13 +48,13 @@ public class RankingController : MonoBehaviour
 		this.targetText.text += "Ranking\n";
 		for (int i = 0; i < 6; i++)
 		{
-			// sort[i] = PlayerPrefabs.GetInt("" + i, 0);
+			sort[i] = PlayerPrefs.GetInt("" + i, 0);
 		}
 
 		// sort配列の中身を降順ソートする
 		for (int start = 1; start < sort.Length; start++)
 		{
-			for (int end = sort.Length - 1;end >= start; end--)
+			for (int end = sort.Length - 1; end >= start; end--)
 			{
 				if (sort[end - 1] <= sort[end])
 				{
@@ -69,18 +69,18 @@ public class RankingController : MonoBehaviour
 		for (int i = 0; i < 5; i++)
 		{
 			// 今のスコアがソート配列の中のものと一致したら、表示させる処理
-			// if (showNowScoreFlag &&  == sort[i])
-			// {
-			// 	this.targetText.text += "<color=red>" + (i + 1) + ":" + sort[i].ToString("D5") + "</color>\n";
-			// 	PlayerPrefabs.SetInt("" + i, sort[i]);
-			// 	showNowScoreFlag = false;
-			// }
-			// else
-			// {
-			// 	this.targetText.text += (i + 1) + ":" + sort[i].ToString("D5") + "\n";
-			// 	PlayerPrefabs.SetInt("" + i, sort[i]);
-			// }
+			if (showNowScoreFlag && GameManager.instance.getScore() == sort[i])
+			{
+				this.targetText.text += "<color=red>" + (i + 1) + ":" + sort[i].ToString("D5") + "</color>\n";
+				PlayerPrefs.SetInt("" + i, sort[i]);
+				showNowScoreFlag = false;
+			}
+			else
+			{
+				this.targetText.text += (i + 1) + ":" + sort[i].ToString("D5") + "\n";
+				PlayerPrefs.SetInt("" + i, sort[i]);
+			}
 		}
-		// PlayerPrefabs.Save();
+		PlayerPrefs.Save();
 	}
 }

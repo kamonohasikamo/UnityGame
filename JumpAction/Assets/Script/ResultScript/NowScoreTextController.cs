@@ -10,6 +10,7 @@ public class NowScoreTextController : MonoBehaviour
 	{
 		this.nowScoreText = GetComponent<Text>();
 		// Score表示↓
-		// this.nowScoreText.text += "<color=blue>" + + "</color>";
+		this.nowScoreText.text = "";
+		this.nowScoreText.text += "<color=blue>" + GameManager.instance.getScore() + "</color>";
 	}
 }
