@@ -12,20 +12,20 @@ public class ItemButtonController : MonoBehaviour
 	[SerializeField]
 	int greenCount;
 
-    int useCount;
+	int useCount;
 
 	GameObject redButton;
 	GameObject blueButton;
 	GameObject greenButton;
 
-    public GameObject player;
+	public GameObject player;
 
 	void Start()
 	{
 		redCount = 0;
 		blueCount = 0;
 		greenCount = 0;
-        useCount = 0;
+		useCount = 0;
 		redButton = transform.GetChild(0).gameObject;
 		blueButton = transform.GetChild(1).gameObject;
 		greenButton = transform.GetChild(2).gameObject;
@@ -49,18 +49,17 @@ public class ItemButtonController : MonoBehaviour
 
 	public void OnClickRedButton()
 	{
-        redCount = GameManager.instance.getPlayerHaveRedCount();
-  
-        if ( redCount > 0)
-        {
-            redCount--;
-            GameManager.instance.setPlayerHaveRedCount(redCount);
-            player.GetComponent<Renderer>().material.color = Color.red;
-        }
-        useCount++;
-        GameManager.instance.setItemUseCount(useCount);
+		redCount = GameManager.instance.getPlayerHaveRedCount();
 
-    }
+		if ( redCount > 0)
+		{
+			redCount--;
+			GameManager.instance.setPlayerHaveRedCount(redCount);
+			player.GetComponent<Renderer>().material.color = Color.red;
+		}
+		useCount++;
+		GameManager.instance.setItemUseCount(useCount);
+	}
 
 	public void OnClickBlueButton()
 	{

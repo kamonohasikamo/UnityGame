@@ -55,7 +55,13 @@ public class CreateBlockController : MonoBehaviour
 		GameManager.instance.setMaxWave(5);
 		GameManager.instance.setWaveMoveSpeed(2.0f);
 		GameManager.instance.setMovingBlock(0);
-        GameManager.instance.setPlayerHP(100);
+		GameManager.instance.setPlayerHP(100);
+		GameManager.instance.setGameMinute(0);
+		GameManager.instance.setGameSeconds(0);
+		GameManager.instance.setGameTotalSeconds(0);
+		GameManager.instance.setPlayerHaveRedCount(0);
+		GameManager.instance.setPlayerHaveBlueCount(0);
+		GameManager.instance.setPlayerHaveGreenCount(0);
 		isSetBlockAbove = 0;
 		setColorRandomNum = 0;
 	}
@@ -64,6 +70,8 @@ public class CreateBlockController : MonoBehaviour
 	void Update()
 	{
 		parentBlock[((GameManager.instance.getMovingBlock()) % 5)].transform.Translate(-1 * GameManager.instance.getWaveMoveSpeed() * Time.deltaTime, 0, 0);
+
+		// create Block タイミング設定
 		if (parentBlock[((GameManager.instance.getMovingBlock()) % 5)].transform.position.x < -6)
 		{
 			parentBlock[((GameManager.instance.getMovingBlock() + 1) % 5)].transform.Translate(-1 * GameManager.instance.getWaveMoveSpeed() * Time.deltaTime, 0, 0);
@@ -79,6 +87,8 @@ public class CreateBlockController : MonoBehaviour
 			createBlock(colorSelectRandom, ((GameManager.instance.getMovingBlock()) % 5));
 			GameManager.instance.setMovingBlock(GameManager.instance.getMovingBlock() + 1);
 		}
+
+		// wave Speed (Level Design)
 		if ((int)GameManager.instance.getGameTotalSeconds() >= 30 && (int)GameManager.instance.getGameTotalSeconds() < 60)
 		{
 			GameManager.instance.setWaveMoveSpeed(3.0f);
@@ -99,8 +109,15 @@ public class CreateBlockController : MonoBehaviour
 		{
 			GameManager.instance.setWaveMoveSpeed(7.5f);
 		}
+
 	}
 
+	// create Block
+	// colorSelect : red, blue or green.
+	//		red  : 0,
+	//		blue : 1,
+	//		green: 2
+	// waveNum : wave Number
 	void createBlock(int colorSelect, int waveNum)
 	{
 		parentBlock[waveNum] = (GameObject)Resources.Load("parentBlock");
@@ -123,6 +140,7 @@ public class CreateBlockController : MonoBehaviour
 		
 		switch(colorSelect)
 		{
+			// red
 			case 0:
 				for (int i = 0; i < GameManager.instance.getBlockHorizontalLength(); i++)
 				{
@@ -140,6 +158,7 @@ public class CreateBlockController : MonoBehaviour
 					tmpObject.transform.parent = tmpParentObj.transform;
 				}
 				break;
+			// blue
 			case 1:
 				for (int i = 0; i < GameManager.instance.getBlockHorizontalLength(); i++)
 				{
@@ -157,6 +176,7 @@ public class CreateBlockController : MonoBehaviour
 					tmpObject.transform.parent = tmpParentObj.transform;
 				}
 				break;
+			// green
 			case 2:
 				for (int i = 0; i < GameManager.instance.getBlockHorizontalLength(); i++)
 				{
@@ -177,7 +197,7 @@ public class CreateBlockController : MonoBehaviour
 		parentBlock[waveNum] = tmpParentObj;
 	}
 
-
+	// set Block Above Item
 	void setAboveItem(float setPosX_i, int blockHeight, GameObject parent)
 	{
 		isSetBlockAbove = randamVariable.Next(0, 10);

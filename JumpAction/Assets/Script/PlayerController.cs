@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     public float maxHeight;
     public float flapVelocity;
-    int Ccount = 0;
     int redCount = 0;
     int blueCount = 0;
     int greenCount = 0;
@@ -81,7 +80,6 @@ public class PlayerController : MonoBehaviour
             redCount = GameManager.instance.getPlayerHaveRedCount();
             redCount++;
             GameManager.instance.setPlayerHaveRedCount(redCount);
-            Debug.Log("aaa");
         }
         else if (col.gameObject.tag == "ColorItemBlue")
         {

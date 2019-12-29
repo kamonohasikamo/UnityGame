@@ -22,11 +22,10 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-		void Update()
-		{
-				score = gameMinute * 60 + (int)gameSeconds + itemUseCount * 3 - (int)playerFlyTime;
-
-		}
+	void Update()
+	{
+		score = gameMinute * 60 + (int)gameSeconds + itemUseCount * 3 - (int)playerFlyTime;
+	}
 
 	//=============================================
 	// use CreateBlockController variable
@@ -90,7 +89,6 @@ public class GameManager : MonoBehaviour
 
 	public float getWaveMoveSpeed()
 	{
-		Debug.Log("waveSpeed = " + waveMoveSpeed);
 		return waveMoveSpeed;
 	}
 
@@ -178,6 +176,9 @@ public class GameManager : MonoBehaviour
 		gameTotalSeconds = setValue;
 	}
 
+	//=============================================
+	// Player
+	//=============================================
 	//スコア
 	public int score = 0;
 
@@ -217,28 +218,28 @@ public class GameManager : MonoBehaviour
 		itemUseCount = setValue;
 	}
 
-    //HP
-    public static float playerHP = 100;
+	//HP
+	public static float playerHP = 100;
 
-    public float getPlayerHP()
-    {
-        return playerHP;
-    }
+	public float getPlayerHP()
+	{
+		return playerHP;
+	}
 
-    public void setPlayerHP(float setValue)
-    {
-        playerHP = setValue;
-    }
+	public void setPlayerHP(float setValue)
+	{
+		playerHP = setValue;
+	}
 
-    public static int healItemcount = 0;
+	public static int healItemcount = 0;
 
-    public int getHealItemCount()
-    {
-        return healItemcount;
-    }
+	public int getHealItemCount()
+	{
+		return healItemcount;
+	}
 
-    public void setHealItemCount(int setValue)
-    {
-        healItemcount = setValue;
-    }
+	public void setHealItemCount(int setValue)
+	{
+		healItemcount = setValue;
+	}
 }

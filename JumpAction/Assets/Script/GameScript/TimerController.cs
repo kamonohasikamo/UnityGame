@@ -28,10 +28,11 @@ public class TimerController : MonoBehaviour
 		minute = GameManager.instance.getGameMinute();
 		seconds = GameManager.instance.getGameSeconds();
 		seconds += Time.deltaTime;
+
 		GameManager.instance.setGameSeconds(seconds);
 		GameManager.instance.setGameMinute(minute);
-
 		GameManager.instance.setGameTotalSeconds((minute * 60) + (int)seconds);
+
 		if (seconds >= 60f)
 		{
 			minute++;
