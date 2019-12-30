@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class toDescriptionButton : MonoBehaviour
 {
-    public void ButtonClicked()
-    {
-        SceneManager.LoadScene("Description");
-    }
+	public void ButtonClicked()
+	{
+		SceneManager.LoadScene("Description");
+	}
 }

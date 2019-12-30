@@ -242,4 +242,19 @@ public class GameManager : MonoBehaviour
 	{
 		healItemcount = setValue;
 	}
+
+	//=============================================
+	// GameStart Flag
+	//=============================================
+	public bool isGameStart = false;
+
+	public bool getIsGameStart()
+	{
+		return isGameStart;
+	}
+
+	public void setIsGameStart(bool setFlag)
+	{
+		isGameStart = setFlag;
+	}
 }

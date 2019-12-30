@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class toStartButton : MonoBehaviour
+public class toTitleButton : MonoBehaviour
 {
 	public void OnClick()
 	{
