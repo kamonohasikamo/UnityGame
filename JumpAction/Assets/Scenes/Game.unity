@@ -564,7 +564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76668baf191bd2547bd7c2ab1b977278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 417377166}
+  sound1: {fileID: 8300000, guid: 837f0ca8213075e40b97f9494655a6b1, type: 3}
+  sound2: {fileID: 8300000, guid: 3b9fafa6afc2d0d448bda4f0ca1ec975, type: 3}
   maxHeight: 4
   flapVelocity: 5
 --- !u!212 &417377162
@@ -687,10 +688,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 959ab316fd111854f8fc28936cce1656, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.504
-  m_Pitch: 1
+  m_Volume: 0.344
+  m_Pitch: 2.06
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2300,7 +2301,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9a61ba1074199eb4bb08dda70410fc4e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.208
+  m_Volume: 0.294
   m_Pitch: 1
   Loop: 1
   Mute: 0

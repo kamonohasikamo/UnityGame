@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb2d;
-
-    public AudioSource audioSource;
+    public AudioClip sound1;
+    public AudioClip sound2;
+    AudioSource audioSource;
 
     public float maxHeight;
 	public float flapVelocity;
@@ -58,13 +59,6 @@ public class PlayerController : MonoBehaviour
 			GameManager.instance.setPlayerFlyTime(flyTime);
 		}
 
-        if(tmp.x <= -3.5 || tmp.y <= -5.5)
-        {
-           // SceneManager.LoadScene("Result");
-        }
-    
-
-
 		if(tmp.x <= -3.5 || tmp.y <= -5.5)
 		{
 			SceneManager.LoadScene("Result");
@@ -76,7 +70,7 @@ public class PlayerController : MonoBehaviour
 		if (transform.position.y < maxHeight)
 		{
 			Flap();
-            audioSource.Play();
+            audioSource.PlayOneShot(sound1);
         }
 	}
 
@@ -90,21 +84,24 @@ public class PlayerController : MonoBehaviour
 	{
 		if (col.gameObject.tag == "ColorItemRed")
 		{
-			Destroy(col.gameObject);
+            audioSource.PlayOneShot(sound2);
+            Destroy(col.gameObject);
 			redCount = GameManager.instance.getPlayerHaveRedCount();
 			redCount++;
 			GameManager.instance.setPlayerHaveRedCount(redCount);
 		}
 		else if (col.gameObject.tag == "ColorItemBlue")
 		{
-			Destroy(col.gameObject);
+            audioSource.PlayOneShot(sound2);
+            Destroy(col.gameObject);
 			blueCount = GameManager.instance.getPlayerHaveBlueCount();
 			blueCount++;
 			GameManager.instance.setPlayerHaveBlueCount(blueCount);
 		}
 		else if (col.gameObject.tag == "ColorItemGreen")
 		{
-			Destroy(col.gameObject);
+            audioSource.PlayOneShot(sound2);
+            Destroy(col.gameObject);
 			greenCount = GameManager.instance.getPlayerHaveGreenCount();
 			greenCount++;
 			GameManager.instance.setPlayerHaveGreenCount(greenCount);
