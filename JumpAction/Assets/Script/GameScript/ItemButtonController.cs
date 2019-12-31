@@ -51,39 +51,50 @@ public class ItemButtonController : MonoBehaviour
 	{
 		redCount = GameManager.instance.getPlayerHaveRedCount();
 
-		if ( redCount > 0)
-		{
-			redCount--;
-			GameManager.instance.setPlayerHaveRedCount(redCount);
-			player.GetComponent<Renderer>().material.color = Color.red;
-		}
-		useCount++;
-		GameManager.instance.setItemUseCount(useCount);
+        if (player.GetComponent<Renderer>().material.color != Color.red)
+        {
+            if (redCount > 0)
+            {
+                redCount--;
+                GameManager.instance.setPlayerHaveRedCount(redCount);
+                player.GetComponent<Renderer>().material.color = Color.red;
+            }
+            useCount++;
+            GameManager.instance.setItemUseCount(useCount);
+        }
 	}
 
 	public void OnClickBlueButton()
 	{
-        blueCount = GameManager.instance.getPlayerHaveBlueCount();
-        if (blueCount > 0)
         {
-            blueCount--;
-            GameManager.instance.setPlayerHaveBlueCount(blueCount);
-            player.GetComponent<Renderer>().material.color = Color.blue;
+            if (player.GetComponent<Renderer>().material.color != Color.blue)
+            {
+                blueCount = GameManager.instance.getPlayerHaveBlueCount();
+                if (blueCount > 0)
+                {
+                    blueCount--;
+                    GameManager.instance.setPlayerHaveBlueCount(blueCount);
+                    player.GetComponent<Renderer>().material.color = Color.blue;
+                }
+                useCount++;
+                GameManager.instance.setItemUseCount(useCount);
+            }
         }
-        useCount++;
-        GameManager.instance.setItemUseCount(useCount);
     }
 
-	public void OnClickGreenButton()
-	{
-        greenCount = GameManager.instance.getPlayerHaveGreenCount();
-        if (greenCount > 0)
+    public void OnClickGreenButton()
+    {
+        if (player.GetComponent<Renderer>().material.color != Color.green)
         {
-            greenCount--;
-            GameManager.instance.setPlayerHaveGreenCount(greenCount);
-            player.GetComponent<Renderer>().material.color = Color.green;
+            greenCount = GameManager.instance.getPlayerHaveGreenCount();
+            if (greenCount > 0)
+            {
+                greenCount--;
+                GameManager.instance.setPlayerHaveGreenCount(greenCount);
+                player.GetComponent<Renderer>().material.color = Color.green;
+            }
+            useCount++;
+            GameManager.instance.setItemUseCount(useCount);
         }
-        useCount++;
-        GameManager.instance.setItemUseCount(useCount);
     }
 }

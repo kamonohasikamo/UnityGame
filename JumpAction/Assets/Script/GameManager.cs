@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
 	void Update()
 	{
-		score = gameMinute * 60 + (int)gameSeconds + itemUseCount * 3 - (int)playerFlyTime;
+		score = (gameMinute * 60 + (int)gameSeconds) * 10 + itemUseCount * 15 - (int)playerFlyTime;
 	}
 
 	//=============================================

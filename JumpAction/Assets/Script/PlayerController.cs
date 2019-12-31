@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb2d;
 
+    public AudioSource audioSource;
 
-	public float maxHeight;
+    public float maxHeight;
 	public float flapVelocity;
 	int redCount = 0;
 	int blueCount = 0;
@@ -25,7 +26,8 @@ public class PlayerController : MonoBehaviour
 	void Start()
 	{
 		fly = true;
-		value = Random.Range(0, 3);
+        audioSource = gameObject.GetComponent<AudioSource>();
+        value = Random.Range(0, 3);
 		switch(value)
 		{
 			case 0:
@@ -74,7 +76,8 @@ public class PlayerController : MonoBehaviour
 		if (transform.position.y < maxHeight)
 		{
 			Flap();
-		}
+            audioSource.Play();
+        }
 	}
 
 	public void Flap()
