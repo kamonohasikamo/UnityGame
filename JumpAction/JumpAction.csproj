@@ -614,7 +614,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\AudioController.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\GameScript\CreateBlockController.cs" />
+    <Compile Include="Assets\Script\GameScript\HpController.cs" />
+    <Compile Include="Assets\Script\GameScript\ItemButtonController.cs" />
     <Compile Include="Assets\Script\GameScript\TimerController.cs" />
+    <Compile Include="Assets\Script\HowTo.cs" />
+    <Compile Include="Assets\Script\PlayerController.cs" />
+    <Compile Include="Assets\Script\ResultScript\NowScoreTextController.cs" />
+    <Compile Include="Assets\Script\ResultScript\RankingController.cs" />
     <Compile Include="Assets\Script\StartButton.cs" />
     <Compile Include="Assets\Script\toDescriptionButton.cs" />
     <Compile Include="Assets\Script\toGameButton.cs" />
@@ -628,6 +637,7 @@
     <None Include="Assets\Materials\tes.txt" />
     <None Include="Assets\PhysicsMaterial\tes.txt" />
     <None Include="Assets\Prefabs\tes.txt" />
+    <None Include="Assets\Resources\HowTo.txt" />
     <None Include="Assets\Script\tes.txt" />
     <None Include="Assets\Textures\tes.txt" />
     <None Include="Packages\com.unity.collab-proxy\Editor\Resources\Styles\CollabHistoryCommon.uss" />

@@ -257,4 +257,18 @@ public class GameManager : MonoBehaviour
 	{
 		isGameStart = setFlag;
 	}
+
+   //PlayerColoerCheck
+    public int playerStatus = 3;
+
+    public int getPlayerStatus()
+    {
+        return playerStatus;
+    }
+
+    public void setPlayerStatus(int setValue)
+    {
+        playerStatus = setValue;
+    }
+    
 }

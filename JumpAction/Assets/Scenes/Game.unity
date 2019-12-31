@@ -527,7 +527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a068a3fc13f4a4844a3d924f6b05fc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NaturalDamege: 0.05
+  NaturalDamage: 0.05
+  TypeGoodHeal: 0.08
+  TypeBadDamage: 0.1
   slider: {fileID: 726718368}
 --- !u!1 &417377160
 GameObject:
@@ -1757,6 +1759,7 @@ MonoBehaviour:
   blockHorizontalLength: 0
   score: 0
   isGameStart: 0
+  playerStatus: 3
 --- !u!4 &1524280595
 Transform:
   m_ObjectHideFlags: 0

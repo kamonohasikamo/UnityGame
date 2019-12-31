@@ -62,6 +62,7 @@ public class CreateBlockController : MonoBehaviour
 		GameManager.instance.setPlayerHaveRedCount(0);
 		GameManager.instance.setPlayerHaveBlueCount(0);
 		GameManager.instance.setPlayerHaveGreenCount(0);
+        GameManager.instance.setPlayerStatus(3);
 		isSetBlockAbove = 0;
 		setColorRandomNum = 0;
 	}

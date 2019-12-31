@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ColorItemBlue
+  - ColorItemGreen
+  - ColorItemRed
+  - HealItem
+  - Block
+  - BlueBlock
+  - RedBlock
+  - GreenBlock
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb2d;
 
+
 	public float maxHeight;
 	public float flapVelocity;
 	int redCount = 0;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	float flyTime = 0.0f;
 	bool fly ;
 	int value;
+    int typeMatch;
 
 
 
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
 		{
 			case 0:
 				gameObject.GetComponent<Renderer>().material.color = Color.red;
-				break;
+                break;
 			case 1:
 				gameObject.GetComponent<Renderer>().material.color = Color.blue;
 				break;
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 
+
 	void Update()
 	{
 		Vector3 tmp = GameObject.Find("Player").transform.position;
@@ -52,6 +55,13 @@ public class PlayerController : MonoBehaviour
 			flyTime += Time.deltaTime;
 			GameManager.instance.setPlayerFlyTime(flyTime);
 		}
+
+        if(tmp.x <= -3.5 || tmp.y <= -5.5)
+        {
+           // SceneManager.LoadScene("Result");
+        }
+    
+
 
 		if(tmp.x <= -3.5 || tmp.y <= -5.5)
 		{
@@ -71,6 +81,7 @@ public class PlayerController : MonoBehaviour
 	{
 		rb2d.velocity = new Vector2(0.0f, flapVelocity);
 	}
+
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
@@ -104,19 +115,66 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void OnCollisionStay2D(Collision2D col)
-	{
-		if (col.gameObject.tag == "Block")
-		{
-			fly = false;
-		}
-	}
+    void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "RedBlock")
+        {
+            fly = false;
+            if (gameObject.GetComponent<Renderer>().material.color == Color.red)
+            {
+                GameManager.instance.setPlayerStatus(1);
+            }
+            else if (gameObject.GetComponent<Renderer>().material.color == Color.blue)
+            {
+                GameManager.instance.setPlayerStatus(0);
+            }
+            else if (gameObject.GetComponent<Renderer>().material.color == Color.green)
+            {
+                GameManager.instance.setPlayerStatus(2);
+            }
+        }
+        else if (col.gameObject.tag == "BlueBlock")
+        {
+            if (gameObject.GetComponent<Renderer>().material.color == Color.red)
+            {
+                GameManager.instance.setPlayerStatus(2);
+            }
+            else if (gameObject.GetComponent<Renderer>().material.color == Color.blue)
+            {
+                GameManager.instance.setPlayerStatus(1);
+            }
+            else if (gameObject.GetComponent<Renderer>().material.color == Color.green)
+            {
+                GameManager.instance.setPlayerStatus(0);
+            }
+        }
+        else if (col.gameObject.tag == "GreenBlock")
+        {
+            if (gameObject.GetComponent<Renderer>().material.color == Color.red)
+            {
+                GameManager.instance.setPlayerStatus(0);
+            }
+            else if (gameObject.GetComponent<Renderer>().material.color == Color.blue)
+            {
+                GameManager.instance.setPlayerStatus(2);
+            }
+            else if (gameObject.GetComponent<Renderer>().material.color == Color.green)
+            {
+                GameManager.instance.setPlayerStatus(1);
+            }
+        }
+        else
+        {
+            GameManager.instance.setPlayerStatus(3);
+        }
+    }
 
-	void OnCollisionExit2D(Collision2D col)
-	{
-		if (col.gameObject.tag == "Block")
-		{
-			fly = true;
-		}
-	}
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "RedBlock" || col.gameObject.tag == "BlueBlock" || col.gameObject.tag == "GreenBlock")
+        {
+            fly = true;
+            GameManager.instance.setPlayerStatus(3);
+        }
+    }
 }

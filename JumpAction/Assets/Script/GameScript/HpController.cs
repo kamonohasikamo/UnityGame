@@ -12,8 +12,11 @@ public class HpController : MonoBehaviour
 	float maxHp;
 	float currentHp;
 	int healCount;
+    int typeMatch;
 
-	public float NaturalDamege = 0.01f;
+	public float NaturalDamage = 0.0f;
+    public float TypeGoodHeal = 0.0f;
+    public float TypeBadDamage = 0.0f;
 	//Sliderを入れる
 	public Slider slider;
 
@@ -30,22 +33,45 @@ public class HpController : MonoBehaviour
 	{
 		if (GameManager.instance.getIsGameStart())
 		{
-			currentHp = currentHp - NaturalDamege;
+            typeMatch = GameManager.instance.getPlayerStatus();
 			GameManager.instance.setPlayerHP(currentHp);
 			currentHp = GameManager.instance.getPlayerHP();
 			slider.value = (float)currentHp / (float)maxHp;
 			healCount = GameManager.instance.getHealItemCount();
-			if(healCount > 0)
+
+            switch (typeMatch)
+            {
+                case 0:
+                    currentHp = currentHp + TypeGoodHeal;
+                    GameManager.instance.setPlayerHP(currentHp);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    currentHp = currentHp - TypeBadDamage;
+                    GameManager.instance.setPlayerHP(currentHp);
+                    break;
+                case 3:
+                    currentHp = currentHp - NaturalDamage;
+                    GameManager.instance.setPlayerHP(currentHp);
+                    break;
+            }
+
+            if (healCount > 0)
 			{
-				healCount--;
+                healCount--;
 				currentHp = currentHp + 10;
 				GameManager.instance.setHealItemCount(healCount);
 				GameManager.instance.setPlayerHP(currentHp);
-			}
-			if(currentHp <= 0)
+			}else if(currentHp <= 0)
 			{
 				SceneManager.LoadScene("Result");
 			}
+
+            if(currentHp >= 100)
+            {
+                GameManager.instance.setPlayerHP(100);
+            }
 		}
 	}
 }
