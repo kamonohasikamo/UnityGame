@@ -1,0 +1,66 @@
+﻿{
+	
+	"Master":[
+		{
+			"pageId":	"1",
+			"description":	"\n　タップすると\n　浮遊するよ！",
+			"isImage":	"False",
+			"imageNum":	""
+		},
+		{
+			"pageId":	"2",
+			"description":	"\nアイテムをとって\n右下のボタンを押すと\nキャラの色が変わるよ",
+			"isImage":	"False",
+			"imageNum":	""
+		},
+		{
+			"pageId":	"3",
+			"description":	"\nゲージが無くなる\n　もしくは\n画面外に行くと\nゲームオーバーだよ",
+			"isImage":	"False",
+			"imageNum":	""
+		},
+		{
+			"pageId":	"4",
+			"description":	"\n\n\n　　属性の説明",
+			"isImage":	"False",
+			"imageNum":	""
+		},
+		{
+			"pageId":	"5",
+			"description":	"\n\n\n\n\n　矢印の通りに\n　強くなるよ！",
+			"isImage":	"True",
+			"imageNum":	"0"
+		},
+		{
+			"pageId":	"6",
+			"description":	"\nステージと同じ色\nゲージが減らないよ！",
+			"isImage":	"False",
+			"imageNum":	""
+		},
+		{
+			"pageId":	"7",
+			"description":	"\nステージより強い色\nゲージが回復するよ！",
+			"isImage":	"False",
+			"imageNum":	""
+		},
+		{
+			"pageId":	"8",
+			"description":	"\nステージより弱い色\nゲージが減るよ！",
+			"isImage":	"False",
+			"imageNum":	""
+		},
+		{
+			"pageId":	"9",
+			"description":	"\n時間経過でも\nゲージが減るから\n注意しよう！",
+			"isImage":	"False",
+			"imageNum":	""
+		},
+		{
+			"pageId":	"10",
+			"description":	"\n☆は\nゲージが回復するよ！\nあまり出ないから\n積極的に取ろう！",
+			"isImage":	"False",
+			"imageNum":	""
+		}
+	],
+	"Length":"10"
+}
