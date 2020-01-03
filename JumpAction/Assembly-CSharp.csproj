@@ -57,6 +57,8 @@
      <Compile Include="Assets\Script\PlayerController.cs" />
      <Compile Include="Assets\Script\ResultScript\NowScoreTextController.cs" />
      <Compile Include="Assets\Script\ResultScript\RankingController.cs" />
+     <Compile Include="Assets\Script\ResultScript\ResultStarController.cs" />
+     <Compile Include="Assets\Script\ResultScript\ResultStarObjectController.cs" />
      <Compile Include="Assets\Script\StartButton.cs" />
      <Compile Include="Assets\Script\toDescriptionButton.cs" />
      <Compile Include="Assets\Script\toGameButton.cs" />
