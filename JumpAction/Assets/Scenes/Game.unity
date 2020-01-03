@@ -568,6 +568,8 @@ MonoBehaviour:
   sound2: {fileID: 8300000, guid: 3b9fafa6afc2d0d448bda4f0ca1ec975, type: 3}
   maxHeight: 4
   flapVelocity: 5
+  rightMovingTimeThreshold: 1.5
+  RightForceMagnification: 0.2
 --- !u!212 &417377162
 SpriteRenderer:
   m_ObjectHideFlags: 0
