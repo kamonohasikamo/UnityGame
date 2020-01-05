@@ -270,5 +270,15 @@ public class GameManager : MonoBehaviour
     {
         playerStatus = setValue;
     }
-    
+	// Player Cheat Flag
+	public bool isCheat = false;
+	public bool getIsCheat()
+	{
+		return isCheat;
+	}
+
+	public void setIsCheat(bool setFlag)
+	{
+		isCheat = setFlag;
+	}
 }

@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\AudioController.cs" />
+     <Compile Include="Assets\Script\CheatButtonController.cs" />
      <Compile Include="Assets\Script\DescriptionMaster.cs" />
      <Compile Include="Assets\Script\GameManager.cs" />
      <Compile Include="Assets\Script\GameScript\CreateBlockController.cs" />
