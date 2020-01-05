@@ -21,6 +21,8 @@ public class Data
 	public string description;
 	public bool isImage;
 	public int imageNum;
+	public int imageNum2;
+	public int imageNum3;
 }
 
 public class DescriptionMaster : MonoBehaviour
@@ -62,7 +64,7 @@ public class DescriptionMaster : MonoBehaviour
 		countText.text = "(" + showPageId + "/" + masterJson.Length + ")";
 		if (masterJson.Master[nowPageId].isImage)
 		{
-			showImageObject[masterJson.Master[nowPageId].imageNum].SetActive(true);
+			setActiveImage(true);
 		}
 	}
 
@@ -70,7 +72,7 @@ public class DescriptionMaster : MonoBehaviour
 	{
 		if (masterJson.Master[nowPageId].isImage)
 		{
-			showImageObject[masterJson.Master[nowPageId].imageNum].SetActive(false);
+			setActiveImage(false);
 		}
 		if (nowPageId < masterJson.Length - 1)
 		{
@@ -88,7 +90,7 @@ public class DescriptionMaster : MonoBehaviour
 	{
 		if (masterJson.Master[nowPageId].isImage)
 		{
-			showImageObject[masterJson.Master[nowPageId].imageNum].SetActive(false);
+			setActiveImage(false);
 		}
 		if (nowPageId > 0)
 		{
@@ -99,5 +101,19 @@ public class DescriptionMaster : MonoBehaviour
 			nowPageId = masterJson.Length - 1;
 		}
 		dataText.text = masterJson.Master[nowPageId].description;
+	}
+
+	// 99999 をnullとして扱う
+	void setActiveImage(bool isSetActive)
+	{
+		showImageObject[masterJson.Master[nowPageId].imageNum].SetActive(isSetActive);
+		if (masterJson.Master[nowPageId].imageNum2 != 99999)
+		{
+			showImageObject[masterJson.Master[nowPageId].imageNum2].SetActive(isSetActive);
+		}
+		if (masterJson.Master[nowPageId].imageNum3 != 99999)
+		{
+			showImageObject[masterJson.Master[nowPageId].imageNum3].SetActive(isSetActive);
+		}
 	}
 }

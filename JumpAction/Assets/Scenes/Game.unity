@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f8a154caeddd74e8d830b96a1af2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setBlockFirstXPoint: 8
 --- !u!4 &307963952
 Transform:
   m_ObjectHideFlags: 0
@@ -527,8 +528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a068a3fc13f4a4844a3d924f6b05fc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NaturalDamage: 0.1
-  TypeGoodHeal: 0.2
+  NaturalDamage: 0.08
+  TypeGoodHeal: 0.4
   TypeBadDamage: 0.3
   slider: {fileID: 726718368}
 --- !u!1 &417377160

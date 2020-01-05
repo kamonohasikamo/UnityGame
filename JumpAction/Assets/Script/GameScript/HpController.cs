@@ -60,7 +60,7 @@ public class HpController : MonoBehaviour
             if (healCount > 0)
 			{
                 healCount--;
-				currentHp = currentHp + 10;
+				currentHp = currentHp + 13;
 				GameManager.instance.setHealItemCount(healCount);
 				GameManager.instance.setPlayerHP(currentHp);
 			}else if(currentHp <= 0)

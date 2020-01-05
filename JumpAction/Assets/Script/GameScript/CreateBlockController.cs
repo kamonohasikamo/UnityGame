@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CreateBlockController : MonoBehaviour
 {
+	// ブロック初期x座標
+	public float setBlockFirstXPoint;
 	// Blockの高さの最大値
 	int blockMaxHight;
 	// ランダム用変数
@@ -154,7 +156,7 @@ public class CreateBlockController : MonoBehaviour
 					// ブロックの上にアイテムを置く処理
 					setAboveItem((float)i + createSpace, blockHeight, tmpParentObj);
 
-					GameObject tmpObject = Instantiate(redBlockObject, new Vector2(10.0f + (float)i + createSpace, scaleY - 4.5f), Quaternion.identity) as GameObject;
+					GameObject tmpObject = Instantiate(redBlockObject, new Vector2(setBlockFirstXPoint + (float)i + createSpace, scaleY - 4.5f), Quaternion.identity) as GameObject;
 					
 					tmpObject.transform.parent = tmpParentObj.transform;
 				}
@@ -172,7 +174,7 @@ public class CreateBlockController : MonoBehaviour
 					// ブロックの上にアイテムを置く処理
 					setAboveItem((float)i + createSpace, blockHeight, tmpParentObj);
 
-					GameObject tmpObject = Instantiate(blueBlockObject, new Vector2(10.0f + (float)i + createSpace, scaleY - 4.5f), Quaternion.identity) as GameObject;
+					GameObject tmpObject = Instantiate(blueBlockObject, new Vector2(setBlockFirstXPoint + (float)i + createSpace, scaleY - 4.5f), Quaternion.identity) as GameObject;
 					
 					tmpObject.transform.parent = tmpParentObj.transform;
 				}
@@ -190,7 +192,7 @@ public class CreateBlockController : MonoBehaviour
 					// ブロックの上にアイテムを置く処理
 					setAboveItem((float)i + createSpace, blockHeight, tmpParentObj);
 
-					GameObject tmpObject = Instantiate(greenBlockObject, new Vector2(10.0f + (float)i + createSpace, scaleY - 4.5f), Quaternion.identity) as GameObject;
+					GameObject tmpObject = Instantiate(greenBlockObject, new Vector2(setBlockFirstXPoint + (float)i + createSpace, scaleY - 4.5f), Quaternion.identity) as GameObject;
 					tmpObject.transform.parent = tmpParentObj.transform;
 				}
 				break;
@@ -207,13 +209,13 @@ public class CreateBlockController : MonoBehaviour
 		{
 			setColorRandomNum = randamVariable.Next(0, 3);
 			setBlockAboveItem = (GameObject)Resources.Load(setItemPath[setColorRandomNum]);
-			GameObject tmp = Instantiate(setBlockAboveItem, new Vector2(10.0f + setPosX_i, scaleY), Quaternion.identity) as GameObject;
+			GameObject tmp = Instantiate(setBlockAboveItem, new Vector2(setBlockFirstXPoint + setPosX_i, scaleY), Quaternion.identity) as GameObject;
 			tmp.transform.parent = parent.transform;
 		}
 		else if (isSetBlockAbove == 9)
 		{
 			setBlockAboveItem = (GameObject)Resources.Load(setItemPath[3]);
-			GameObject tmp = Instantiate(setBlockAboveItem, new Vector2(10.0f + setPosX_i, scaleY), Quaternion.identity) as GameObject;
+			GameObject tmp = Instantiate(setBlockAboveItem, new Vector2(setBlockFirstXPoint + setPosX_i, scaleY), Quaternion.identity) as GameObject;
 			tmp.transform.parent = parent.transform;
 		}
 	}
