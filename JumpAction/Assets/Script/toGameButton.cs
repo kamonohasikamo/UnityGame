@@ -7,6 +7,7 @@ public class toGameButton : MonoBehaviour
 {
 	public void OnClick()
 	{
+		GameManager.instance.setIsCheat(false);
 		SceneManager.LoadScene("Game");
 	}
 }
