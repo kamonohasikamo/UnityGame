@@ -528,9 +528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a068a3fc13f4a4844a3d924f6b05fc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NaturalDamage: 0.08
-  TypeGoodHeal: 0.4
-  TypeBadDamage: 0.3
+  NaturalDamage: 0.05
+  TypeGoodHeal: 0.1
+  TypeBadDamage: 0.2
   slider: {fileID: 726718368}
 --- !u!1 &417377160
 GameObject:
@@ -570,7 +570,7 @@ MonoBehaviour:
   maxHeight: 4
   flapVelocity: 5
   rightMovingTimeThreshold: 1.5
-  RightForceMagnification: 0.2
+  RightForceMagnification: 0.5
 --- !u!212 &417377162
 SpriteRenderer:
   m_ObjectHideFlags: 0
