@@ -22,7 +22,7 @@ public class RankingController : MonoBehaviour
 	private Text targetText;
 
 	// sort用配列
-	private int[] sort = new int[6];
+	private int[] sort = new int[5];
 	private int tmp = 0;
 
 	void Start()
@@ -39,14 +39,14 @@ public class RankingController : MonoBehaviour
 		// Scoreを端末に保存する
 		// 第一引数：保存名
 		// 第二引数：保存する値(SetIntなのでInt型限定)
-		PlayerPrefs.SetInt("5", GameManager.instance.getScore());
+		PlayerPrefs.SetInt("4", GameManager.instance.getScore());
 		PlayerPrefs.Save();
 	}
 
 	void showRanking()
 	{
 		this.targetText.text += "Ranking\n";
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			sort[i] = PlayerPrefs.GetInt("" + i, 0);
 		}
@@ -66,7 +66,7 @@ public class RankingController : MonoBehaviour
 		}
 
 		bool showNowScoreFlag = true;
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 4; i++)
 		{
 			// 今のスコアがソート配列の中のものと一致したら、表示させる処理
 			if (showNowScoreFlag && GameManager.instance.getScore() == sort[i])
