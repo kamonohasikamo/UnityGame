@@ -31,6 +31,10 @@ public class HpController : MonoBehaviour
 
 	void Update()
 	{
+		if (Mathf.Approximately(Time.timeScale, 0f))
+		{
+			return;
+		}
 		if (GameManager.instance.getIsCheat())
 		{
 			currentHp = 100;
