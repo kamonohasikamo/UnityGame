@@ -110,7 +110,29 @@
 			"imagePath":	"DescriptionImage/star",
 			"imagePath2":	"0",
 			"imagePath3":	"0"
+		},
+		{
+			"pageId":	"11",
+			"description":	"\n\n\nそれぞれの色の\nボタンを押すと\nプレイヤーの色が\n替わるよ",
+			"isImage":	"True",
+			"imageNum":	"11",
+			"imageNum2":	"99999",
+			"imageNum3":	"99999",
+			"imagePath":	"DescriptionImage/buttonPanel",
+			"imagePath2":	"0",
+			"imagePath3":	"0"
+		},
+		{
+			"pageId":	"12",
+			"description":	"\n\n\nボタンの数字が\nアイテムの個数だよ\n",
+			"isImage":	"True",
+			"imageNum":	"11",
+			"imageNum2":	"99999",
+			"imageNum3":	"99999",
+			"imagePath":	"DescriptionImage/buttonPanel",
+			"imagePath2":	"0",
+			"imagePath3":	"0"
 		}
 	],
-	"Length":"10"
+	"Length":"12"
 }
