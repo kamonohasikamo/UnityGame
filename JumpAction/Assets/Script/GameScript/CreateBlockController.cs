@@ -109,9 +109,13 @@ public class CreateBlockController : MonoBehaviour
 		{
 			GameManager.instance.setWaveMoveSpeed(6.0f);
 		}
-		else if(GameManager.instance.getGameTotalSeconds() >= 150)
+		else if(GameManager.instance.getGameTotalSeconds() >= 150 && GameManager.instance.getGameTotalSeconds() < 180)
 		{
 			GameManager.instance.setWaveMoveSpeed(7.5f);
+		}
+		else if (GameManager.instance.getGameTotalSeconds() >= 180)
+		{
+			GameManager.instance.setWaveMoveSpeed(9.0f);
 		}
 
 	}
