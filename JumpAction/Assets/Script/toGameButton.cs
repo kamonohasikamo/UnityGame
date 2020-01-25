@@ -8,6 +8,8 @@ public class toGameButton : MonoBehaviour
 	public void OnClick()
 	{
 		GameManager.instance.setIsCheat(false);
+		GameManager.instance.setScore(0);
+		GameManager.instance.setItemUseCount(0);
 		SceneManager.LoadScene("Game");
 	}
 }

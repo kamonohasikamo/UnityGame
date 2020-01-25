@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseWindowButtonsController : MonoBehaviour
 {
+	#pragma warning disable 649
 	[SerializeField]
 	private GameObject pauseUI;
+	#pragma warning restore 649
+
 	public void onPressToTitleButton()
 	{
 		Time.timeScale = 1f;

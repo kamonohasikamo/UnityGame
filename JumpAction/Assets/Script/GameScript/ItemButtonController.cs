@@ -50,6 +50,10 @@ public class ItemButtonController : MonoBehaviour
 	public void OnClickRedButton()
 	{
 		redCount = GameManager.instance.getPlayerHaveRedCount();
+		if (redCount <= 0)
+		{
+			return;
+		}
 
         if (player.GetComponent<Renderer>().material.color != Color.red)
         {
@@ -66,27 +70,36 @@ public class ItemButtonController : MonoBehaviour
 
 	public void OnClickBlueButton()
 	{
-        {
-            if (player.GetComponent<Renderer>().material.color != Color.blue)
-            {
-                blueCount = GameManager.instance.getPlayerHaveBlueCount();
-                if (blueCount > 0)
-                {
-                    blueCount--;
-                    GameManager.instance.setPlayerHaveBlueCount(blueCount);
-                    player.GetComponent<Renderer>().material.color = Color.blue;
-                }
-                useCount++;
-                GameManager.instance.setItemUseCount(useCount);
-            }
-        }
+		blueCount = GameManager.instance.getPlayerHaveBlueCount();
+		if (blueCount <= 0)
+		{
+			return;
+		}
+
+		if (player.GetComponent<Renderer>().material.color != Color.blue)
+		{
+			
+			if (blueCount > 0)
+			{
+				blueCount--;
+				GameManager.instance.setPlayerHaveBlueCount(blueCount);
+				player.GetComponent<Renderer>().material.color = Color.blue;
+			}
+			useCount++;
+			GameManager.instance.setItemUseCount(useCount);
+		}
     }
 
     public void OnClickGreenButton()
     {
+		greenCount = GameManager.instance.getPlayerHaveGreenCount();
+		if (greenCount <= 0)
+		{
+			return;
+		}
+
         if (player.GetComponent<Renderer>().material.color != Color.green)
         {
-            greenCount = GameManager.instance.getPlayerHaveGreenCount();
             if (greenCount > 0)
             {
                 greenCount--;
