@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
 	void Update()
 	{
 		score = (gameMinute * 60 + (int)gameSeconds) * 100 + itemUseCount * 100 - (int)playerFlyTime;
-		Debug.Log("score = " + score);
 	}
 
 	//=============================================

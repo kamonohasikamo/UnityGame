@@ -76,14 +76,21 @@ public class HpController : MonoBehaviour
 				}
 				else if(currentHp <= 0)
 				{
-					SceneManager.LoadScene("Result");
+					StartCoroutine(gameOver());
 				}
 
-				if(currentHp >= 100)
+				if(currentHp > 100)
 				{
+					currentHp = 100;
 					GameManager.instance.setPlayerHP(100);
 				}
 			}
 		}
+	}
+
+	IEnumerator gameOver()
+	{
+		yield return new WaitForSeconds(0.7f);
+		SceneManager.LoadScene("Result");
 	}
 }
