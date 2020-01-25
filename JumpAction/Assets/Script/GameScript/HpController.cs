@@ -76,7 +76,7 @@ public class HpController : MonoBehaviour
 				}
 				else if(currentHp <= 0)
 				{
-					StartCoroutine(gameOver());
+					SceneManager.LoadScene("Result");
 				}
 
 				if(currentHp > 100)
@@ -86,11 +86,5 @@ public class HpController : MonoBehaviour
 				}
 			}
 		}
-	}
-
-	IEnumerator gameOver()
-	{
-		yield return new WaitForSeconds(0.7f);
-		SceneManager.LoadScene("Result");
 	}
 }

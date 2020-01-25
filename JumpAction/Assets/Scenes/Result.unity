@@ -1466,7 +1466,7 @@ GameObject:
   - component: {fileID: 1340258353}
   - component: {fileID: 1340258357}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ResultSceneCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1582,7 +1582,7 @@ GameObject:
   - component: {fileID: 1455270729}
   - component: {fileID: 1455270728}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TweetButtonCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1818,6 +1818,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669794275}
   m_CullTransparentMesh: 0
+--- !u!1 &1818491244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818491245}
+  - component: {fileID: 1818491246}
+  m_Layer: 0
+  m_Name: BtnChangeEnabledObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1818491245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818491244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 393.1272, y: 582.0433, z: -2146.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1818491246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818491244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc3ea578c0d6e143b392424d5597ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweetButton: {fileID: 2056890438}
+  againButton: {fileID: 719633396}
+  toTitleButton: {fileID: 144755764}
 --- !u!1 &1822879060
 GameObject:
   m_ObjectHideFlags: 0

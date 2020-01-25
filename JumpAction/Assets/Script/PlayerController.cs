@@ -82,14 +82,8 @@ public class PlayerController : MonoBehaviour
 
 		if(tmp.x <= -3.5 || tmp.y <= -5.5)
 		{
-			StartCoroutine(gameOver());
+			SceneManager.LoadScene("Result");
 		}
-	}
-
-	IEnumerator gameOver()
-	{
-		yield return new WaitForSeconds(0.7f);
-		SceneManager.LoadScene("Result");
 	}
 
 	public void onClickAct()
