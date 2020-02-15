@@ -5,31 +5,33 @@ using UnityEngine.UI;
 
 public class ButtonChangeEnabled : MonoBehaviour
 {
-    //==========================================
-    // GameSceneでタップ連打した際の
-    // タップ判定が残る挙動の対応用クラス
-    //==========================================
-    
-    #pragma warning disable 649
+	//==========================================
+	// GameSceneでタップ連打した際の
+	// タップ判定が残る挙動の対応用クラス
+	//==========================================
+	
+	#pragma warning disable 649
 	[SerializeField]
 	private GameObject tweetButton;
-    [SerializeField]
+	[SerializeField]
 	private GameObject againButton;
-    [SerializeField]
+	[SerializeField]
 	private GameObject toTitleButton;
 	#pragma warning restore 649
 
-    void Awake()
-    {
-        tweetButton.GetComponent<Button>().enabled = false;
-        againButton.GetComponent<Button>().enabled = false;
-        toTitleButton.GetComponent<Button>().enabled = false;
-    }
+	void Awake()
+	{
+		tweetButton.GetComponent<Button>().enabled = false;
+		againButton.GetComponent<Button>().enabled = false;
+		toTitleButton.GetComponent<Button>().enabled = false;
+		StartCoroutine(changeButtonEnable());
+	}
 
-    void Start()
-    {
-        tweetButton.GetComponent<Button>().enabled = true;
-        againButton.GetComponent<Button>().enabled = true;
-        toTitleButton.GetComponent<Button>().enabled = true;
-    }
+	IEnumerator changeButtonEnable()
+	{
+		yield return new WaitForSeconds(0.5f);
+		tweetButton.GetComponent<Button>().enabled = true;
+		againButton.GetComponent<Button>().enabled = true;
+		toTitleButton.GetComponent<Button>().enabled = true;
+	}
 }

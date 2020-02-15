@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
 			playerRightCorrectionTime = 0.0f;
 		}
 
-		if(tmp.x <= -3.5 || tmp.y <= -5.5)
+		if(tmp.x <= -3 || tmp.y <= -5.5)
 		{
 			SceneManager.LoadScene("Result");
 		}
