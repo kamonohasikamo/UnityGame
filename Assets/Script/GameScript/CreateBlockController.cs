@@ -43,7 +43,7 @@ public class CreateBlockController : MonoBehaviour
 	void Start()
 	{
 		gameInit();
-		for (int i = 0; i < GameManager.instance.getMaxWave(); i++)
+		for (int i = 0; i < GameManager.instance.MaxWave; i++)
 		{
 			colorSelectRandom = randamVariable.Next(0, 3);
 			createBlock(colorSelectRandom, i);
@@ -52,9 +52,9 @@ public class CreateBlockController : MonoBehaviour
 
 	void gameInit()
 	{
-		GameManager.instance.setBlockHorizontalLength(10);
-		GameManager.instance.setBlockMaxHeight(8);
-		GameManager.instance.setMaxWave(5);
+		GameManager.instance.BlockHorizontalLength = 10;
+		GameManager.instance.BlockMaxHeight = 8;
+		GameManager.instance.MaxWave = 5;
 		GameManager.instance.setWaveMoveSpeed(2.0f);
 		GameManager.instance.setMovingBlock(0);
 		GameManager.instance.setPlayerHP(100);
@@ -150,10 +150,10 @@ public class CreateBlockController : MonoBehaviour
 		{
 			// red
 			case 0:
-				for (int i = 0; i < GameManager.instance.getBlockHorizontalLength(); i++)
+				for (int i = 0; i < GameManager.instance.BlockHorizontalLength; i++)
 				{
 					GameObject redBlockObject = (GameObject)Resources.Load("redBlock");
-					blockHeight = randamVariable.Next(1, GameManager.instance.getBlockMaxHeight());
+					blockHeight = randamVariable.Next(1, GameManager.instance.BlockMaxHeight);
 					redBlockObject.transform.localScale = new Vector3(1, blockHeight, 1);
 					// Blockの位置調整
 					float scaleY = (blockHeight == 1) ? 0.0f : (float)(blockHeight - 1) * 0.5f;
@@ -168,10 +168,10 @@ public class CreateBlockController : MonoBehaviour
 				break;
 			// blue
 			case 1:
-				for (int i = 0; i < GameManager.instance.getBlockHorizontalLength(); i++)
+				for (int i = 0; i < GameManager.instance.BlockHorizontalLength; i++)
 				{
 					GameObject blueBlockObject = (GameObject)Resources.Load("blueBlock");
-					blockHeight = randamVariable.Next(1, GameManager.instance.getBlockMaxHeight());
+					blockHeight = randamVariable.Next(1, GameManager.instance.BlockMaxHeight);
 					blueBlockObject.transform.localScale = new Vector3(1, blockHeight, 1);
 					// Blockの位置調整
 					float scaleY = (blockHeight == 1) ? 0.0f : (float)(blockHeight - 1) * 0.5f;
@@ -186,10 +186,10 @@ public class CreateBlockController : MonoBehaviour
 				break;
 			// green
 			case 2:
-				for (int i = 0; i < GameManager.instance.getBlockHorizontalLength(); i++)
+				for (int i = 0; i < GameManager.instance.BlockHorizontalLength; i++)
 				{
 					GameObject greenBlockObject = (GameObject)Resources.Load("greenBlock");
-					blockHeight = randamVariable.Next(1, GameManager.instance.getBlockMaxHeight());
+					blockHeight = randamVariable.Next(1, GameManager.instance.BlockMaxHeight);
 					greenBlockObject.transform.localScale = new Vector3(1, blockHeight, 1);
 					// Blockの位置調整
 					float scaleY = (blockHeight == 1) ? 0.0f : (float)(blockHeight - 1) * 0.5f;

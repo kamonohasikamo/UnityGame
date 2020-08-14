@@ -32,44 +32,51 @@ public class GameManager : MonoBehaviour
 	//=============================================
 
 	// Block の高さの最大値
-	public int blockMaxHeight = 8;
+	private static int blockMaxHeight = 8;
 
-	public int getBlockMaxHeight()
+	public int BlockMaxHeight
 	{
-		return blockMaxHeight;
+		set
+		{
+			blockMaxHeight = value;
+		}
+		get
+		{
+			return blockMaxHeight;
+		}
 	}
-	
-	public void setBlockMaxHeight(int setValue)
-	{
-		blockMaxHeight = setValue;
-	}
-
 
 	// Block の横サイズ
-	public int blockHorizontalLength = 10;
+	private static int blockHorizontalLength = 10;
 	
-	public int getBlockHorizontalLength()
+	public int BlockHorizontalLength
 	{
-		return blockHorizontalLength;
+		set
+		{
+			blockHorizontalLength = value;
+		}
+		get
+		{
+			return blockHorizontalLength;
+		}
 	}
 
-	public void setBlockHorizontalLength(int setValue)
-	{
-		blockHorizontalLength = setValue;
-	}
 
 	// waveの最大値
-	public static int maxWave = 5;
+	private static int maxWave = 5;
 
-	public int getMaxWave()
+	public int MaxWave
 	{
-		return maxWave;
+		set
+		{
+			maxWave = value;
+		}
+		get
+		{
+			return maxWave;
+		}
 	}
 
-	public void setMaxWave(int setValue)
-	{
-		maxWave = setValue;
-	}
 
 	// 今動いているブロックを管理
 	public int movingBlock;
@@ -248,30 +255,33 @@ public class GameManager : MonoBehaviour
 	//=============================================
 	// GameStart Flag
 	//=============================================
-	public bool isGameStart = false;
+	private bool isGameStart = false;
 
-	public bool getIsGameStart()
+	public bool IsGameStart
 	{
-		return isGameStart;
+		set
+		{
+			this.isGameStart = value;
+		}
+		get
+		{
+			return isGameStart;
+		}
 	}
 
-	public void setIsGameStart(bool setFlag)
+
+	//PlayerColoerCheck
+	public int playerStatus = 3;
+
+	public int getPlayerStatus()
 	{
-		isGameStart = setFlag;
+			return playerStatus;
 	}
 
-   //PlayerColoerCheck
-    public int playerStatus = 3;
-
-    public int getPlayerStatus()
-    {
-        return playerStatus;
-    }
-
-    public void setPlayerStatus(int setValue)
-    {
-        playerStatus = setValue;
-    }
+	public void setPlayerStatus(int setValue)
+	{
+			playerStatus = setValue;
+	}
 	// Player Cheat Flag
 	public bool isCheat = false;
 	public bool getIsCheat()

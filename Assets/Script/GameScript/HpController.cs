@@ -41,7 +41,7 @@ public class HpController : MonoBehaviour
 		}
 		else
 		{
-			if (GameManager.instance.getIsGameStart())
+			if (GameManager.instance.IsGameStart)
 			{
 				typeMatch = GameManager.instance.getPlayerStatus();
 				GameManager.instance.setPlayerHP(currentHp);

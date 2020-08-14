@@ -21,7 +21,7 @@ public class FirstTouchPanelController : MonoBehaviour
 
 	void Start()
 	{
-		GameManager.instance.setIsGameStart(false);
+		GameManager.instance.IsGameStart = false;
 	}
 
 	public void OnPressFirstTouchPanel()
@@ -29,7 +29,7 @@ public class FirstTouchPanelController : MonoBehaviour
 		// 最初だけおまけの上向きベクトル
 		playerRB2D.velocity = new Vector2(0.0f, playerFirstFlapVelocity);
 		touchPanel.SetActive(true);
-		GameManager.instance.setIsGameStart(true);
+		GameManager.instance.IsGameStart = true;
 		Time.timeScale = 1f;
 		GameObject parent = this.transform.parent.gameObject;
 		parent.SetActive(false);
