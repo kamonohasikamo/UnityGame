@@ -39,7 +39,7 @@ public class RankingController : MonoBehaviour
 		// Scoreを端末に保存する
 		// 第一引数：保存名
 		// 第二引数：保存する値(SetIntなのでInt型限定)
-		PlayerPrefs.SetInt("4", GameManager.instance.getScore());
+		PlayerPrefs.SetInt("4", GameManager.instance.Score);
 		PlayerPrefs.Save();
 	}
 
@@ -69,7 +69,7 @@ public class RankingController : MonoBehaviour
 		for (int i = 0; i < 4; i++)
 		{
 			// 今のスコアがソート配列の中のものと一致したら、表示させる処理
-			if (showNowScoreFlag && GameManager.instance.getScore() == sort[i])
+			if (showNowScoreFlag && GameManager.instance.Score == sort[i])
 			{
 				this.targetText.text += "<color=red>" + (i + 1) + ":" + sort[i].ToString("D5") + "</color>\n";
 				PlayerPrefs.SetInt("" + i, sort[i]);

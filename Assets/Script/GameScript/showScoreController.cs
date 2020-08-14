@@ -13,6 +13,6 @@ public class showScoreController : MonoBehaviour
 
 	void Update()
 	{
-		scoreText.text = GameManager.instance.getScore().ToString();
+		scoreText.text = GameManager.instance.Score.ToString();
 	}
 }

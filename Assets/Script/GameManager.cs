@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	// 今動いているブロックを管理
-	public static int movingBlock;
+	public int movingBlock;
 
 	public int getMovingBlock()
 	{
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	// wave move speed
-	public static float waveMoveSpeed = 1.0f;
+	public float waveMoveSpeed = 1.0f;
 
 	public float getWaveMoveSpeed()
 	{
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 	//=============================================
 	// use ItemButtonController variable and more?
 	//=============================================
-	public static int playerHaveRedCount = 0;
+	public int playerHaveRedCount = 0;
 
 	public int getPlayerHaveRedCount()
 	{
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
 		playerHaveRedCount = setValue;
 	}
 
-	public static int playerHaveBlueCount = 0;
+	public int playerHaveBlueCount = 0;
 
 	public int getPlayerHaveBlueCount()
 	{
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
 		playerHaveBlueCount = setValue;
 	}
 
-	public static int playerHaveGreenCount = 0;
+	public int playerHaveGreenCount = 0;
 
 	public int getPlayerHaveGreenCount()
 	{
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
 	//=============================================
 	// use TimerController variable and more?
 	//=============================================
-	public static int gameMinute = 0;
+	public int gameMinute = 0;
 
 	public int getGameMinute()
 	{
@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
 		gameMinute = setValue;
 	}
 
-	public static float gameSeconds = 0;
+	public float gameSeconds = 0;
 
 	public float getGameSeconds()
 	{
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
 		gameSeconds = setValue;
 	}
 
-	public static int gameTotalSeconds = 0;
+	public int gameTotalSeconds = 0;
 
 	public int getGameTotalSeconds()
 	{
@@ -180,20 +180,22 @@ public class GameManager : MonoBehaviour
 	// Player
 	//=============================================
 	//スコア
-	public int score = 0;
+	private int score = 0;
 
-	public int getScore()
+	public int Score
 	{
-		return score;
-	}
-
-	public void setScore(int setValue)
-	{
-		score = setValue;
+		set
+		{
+			this.score = value;
+		}
+		get
+		{
+			return score;
+		}
 	}
 
 	//浮遊時間
-	public static float playerFlyTime = 0.0f;
+	public float playerFlyTime = 0.0f;
 
 	public float getPlayerFlyTime()
 	{
@@ -206,7 +208,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	//アイテムの使用回数
-	public static int itemUseCount = 0;
+	public int itemUseCount = 0;
 
 	public int getItemUseCount()
 	{
@@ -219,7 +221,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	//HP
-	public static float playerHP = 100;
+	public float playerHP = 100;
 
 	public float getPlayerHP()
 	{
@@ -231,7 +233,7 @@ public class GameManager : MonoBehaviour
 		playerHP = setValue;
 	}
 
-	public static int healItemcount = 0;
+	public int healItemcount = 0;
 
 	public int getHealItemCount()
 	{

@@ -8,7 +8,7 @@ public class TweetButtonController : MonoBehaviour
 {
 	public void OnPressTweetButton()
 	{
-		string message = "今回のスコアは\n" + GameManager.instance.getScore() + "でした！\n#somatodo_games";
+		string message = "今回のスコアは\n" + GameManager.instance.Score + "でした！\n#somatodo_games";
 		Application.OpenURL("http://twitter.com/intent/tweet?text=" + UnityWebRequest.EscapeURL(message));
 	}
 }
