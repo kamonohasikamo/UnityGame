@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		Vector3 tmp = GameObject.Find("Player").transform.position;
+		Vector3 tmp = this.gameObject.transform.position;
 		if (fly)
 		{
 			flyTime += Time.deltaTime;
