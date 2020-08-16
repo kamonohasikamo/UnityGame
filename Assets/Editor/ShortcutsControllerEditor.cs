@@ -6,6 +6,13 @@ using System.Reflection;
 
 public class ShortcutsControllerEditor : EditorWindow
 {
+	// Shift + F8
+	[MenuItem("Tools/InputName #F8")]
+	private static void shortCutInputName()
+	{
+		EditorSceneManager.OpenScene("Assets/Scenes/InputName.unity", OpenSceneMode.Single);
+	}
+
 	// Shift + F9
 	[MenuItem("Tools/Description #F9")]
 	private static void shortCutDescription()

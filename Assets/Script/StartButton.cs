@@ -31,7 +31,14 @@ public class StartButton : MonoBehaviour
 	IEnumerator LoadGame()
 	{
 		yield return new WaitForSeconds(1f);
-		async = SceneManager.LoadSceneAsync("Game");
+		if (PlayerPrefs.GetString("Name") != "")
+		{
+			async = SceneManager.LoadSceneAsync("Game");
+		}
+		else
+		{
+			async = SceneManager.LoadSceneAsync("InputName");
+		}
 
 		// 読み込みが終わるまで進捗状況をスライダーに送る
 		while(!async.isDone)
