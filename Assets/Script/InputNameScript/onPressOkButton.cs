@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class onPressOkButton : MonoBehaviour
 {
 	public InputField inputNameField;
+	public Text errorText;
+
+	private bool isCreateAccount;
+	private string customId;
+
+	private string playerName = "とど1号";
 
 	public void onClick()
 	{
@@ -15,12 +24,74 @@ public class onPressOkButton : MonoBehaviour
 		GameManager.instance.setItemUseCount(0);
 		if (inputNameField.text != "")
 		{
-			PlayerPrefs.SetString("Name", inputNameField.text);
+			playerName = inputNameField.text;
 		}
-		else
+		login();
+	}
+
+	private void login()
+	{
+		customId = createCustomId();
+		var request = new LoginWithCustomIDRequest
 		{
-			PlayerPrefs.SetString("Name", "とど1号");
+			CustomId = customId,
+			CreateAccount = true,
+		};
+		PlayFabClientAPI.LoginWithCustomID(request, Success, Error);
+	}
+
+	private void Success(LoginResult result)
+	{
+		if (!result.NewlyCreated)
+		{
+			login();
+			return;
 		}
-		SceneManager.LoadScene("Game");
+
+		if (result.NewlyCreated)
+		{
+			saveCustomId();
+			setUserName();
+		}
+	}
+
+	private void setUserName()
+	{
+		PlayFabClientAPI.UpdateUserData(
+			new UpdateUserDataRequest
+			{
+				Data = new Dictionary<string, string>()
+				{
+					{"Name", playerName},
+					{"Score", "0"},
+				}
+			}, 
+			result => {SceneManager.LoadScene("Game");},
+			Error
+		);
+	}
+
+	private void Error(PlayFabError error)
+	{
+		errorText.text = $"ERROR!\n{error.GenerateErrorReport()}";
+	}
+
+	private string createCustomId()
+	{
+		int idLength = 32;
+		StringBuilder stringBuilder = new StringBuilder(idLength);
+		var random = new System.Random();
+
+		for (int i = 0; i < idLength; i++)
+		{
+			stringBuilder.Append(Define.ID_STRING[random.Next(Define.ID_STRING.Length)]);
+		}
+
+		return stringBuilder.ToString();
+	}
+
+	private void saveCustomId()
+	{
+		PlayerPrefs.SetString(Define.CUSTOM_ID_SAVE_KEY, customId);
 	}
 }

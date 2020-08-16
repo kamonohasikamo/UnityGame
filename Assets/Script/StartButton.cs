@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class StartButton : MonoBehaviour
 {
@@ -30,15 +32,26 @@ public class StartButton : MonoBehaviour
 
 	IEnumerator LoadGame()
 	{
-		yield return new WaitForSeconds(1f);
-		if (PlayerPrefs.GetString("Name") != "")
+		if (PlayerPrefs.GetString(Define.CUSTOM_ID_SAVE_KEY) != "")
 		{
-			async = SceneManager.LoadSceneAsync("Game");
+			var customId = PlayerPrefs.GetString(Define.CUSTOM_ID_SAVE_KEY);
+			var request = new LoginWithCustomIDRequest
+			{
+				TitleId = PlayFabSettings.TitleId,
+				CustomId = customId,
+				CreateAccount = false,
+			};
+			PlayFabClientAPI.LoginWithCustomID(
+				request, 
+				result => { async = SceneManager.LoadSceneAsync("Game"); }, 
+				error => { async = SceneManager.LoadSceneAsync("InputName"); }
+			);
 		}
 		else
 		{
 			async = SceneManager.LoadSceneAsync("InputName");
 		}
+		yield return new WaitForSeconds(1f);
 
 		// 読み込みが終わるまで進捗状況をスライダーに送る
 		while(!async.isDone)
@@ -47,7 +60,5 @@ public class StartButton : MonoBehaviour
 			slider.value = progressVal;
 			yield return null;
 		}
-
-
 	}
 }
