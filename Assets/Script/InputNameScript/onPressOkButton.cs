@@ -65,8 +65,12 @@ public class onPressOkButton : MonoBehaviour
 					{"Name", playerName},
 					{"Score", "0"},
 				}
-			}, 
-			result => {SceneManager.LoadScene("Game");},
+			},
+			result =>
+			{
+				PlayerPrefs.SetString("Name", playerName);
+				SceneManager.LoadScene("Game");
+			},
 			Error
 		);
 	}

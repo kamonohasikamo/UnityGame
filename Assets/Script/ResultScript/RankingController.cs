@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayFab;
+using PlayFab.ClientModels;
 
 //==================================================
 // ランキング機能の処理
@@ -10,7 +12,7 @@ using UnityEngine.UI;
 // // その後、ソートを行う。
 // ソート後、上から順にみていき
 // 上位5個を保存し、6個目を破棄。
-// (→　今回のスコアだろうが、今までのスコアだろうが、最下位が消される仕様)
+// (→ 今回のスコアだろうが、今までのスコアだろうが、最下位が消される仕様)
 // この保存するときに、現在のスコアと一致していれば、赤色にする。
 // ただし、現在のスコアと同一の値をとった場合
 // このままだと両方赤色になってしまうので
@@ -19,7 +21,8 @@ using UnityEngine.UI;
 public class RankingController : MonoBehaviour
 {
 	// UI Text
-	private Text targetText;
+	public Text rankingText;
+	string playerName;
 
 	// sort用配列
 	private int[] sort = new int[5];
@@ -27,11 +30,29 @@ public class RankingController : MonoBehaviour
 
 	void Start()
 	{
-		this.targetText = this.GetComponent<Text>();
-		 // 初期化
-		this.targetText.text = "";
+		WorldOrMyScore.WorldOrMyScoreNum = 0;
+		playerName = PlayerPrefs.GetString("Name");
+		rankingText.text = "";
+		setUserName(playerName);
+		sendScore();
 		saveRanking();
 		showRanking();
+	}
+
+	public void OnPressWorldButton()
+	{
+		rankingText.text = "";
+		if (WorldOrMyScore.WorldOrMyScoreNum % 2 == 0)
+		{
+			this.gameObject.GetComponentInChildren<Text>().text = "MyScore";
+			getRanking();
+		}
+		else
+		{
+			this.gameObject.GetComponentInChildren<Text>().text = "World";
+			showRanking();
+		}
+		WorldOrMyScore.addChangeNum();
 	}
 
 	void saveRanking()
@@ -45,7 +66,7 @@ public class RankingController : MonoBehaviour
 
 	void showRanking()
 	{
-		this.targetText.text += "Ranking\n";
+		rankingText.text += "Ranking\n";
 		for (int i = 0; i < 5; i++)
 		{
 			sort[i] = PlayerPrefs.GetInt("" + i, 0);
@@ -71,16 +92,79 @@ public class RankingController : MonoBehaviour
 			// 今のスコアがソート配列の中のものと一致したら、表示させる処理
 			if (showNowScoreFlag && GameManager.instance.Score == sort[i])
 			{
-				this.targetText.text += "<color=red>" + (i + 1) + ":" + sort[i].ToString("D5") + "</color>\n";
+				rankingText.text += "<color=red>" + (i + 1) + ":" + sort[i].ToString("D5") + "</color>\n";
 				PlayerPrefs.SetInt("" + i, sort[i]);
 				showNowScoreFlag = false;
 			}
 			else
 			{
-				this.targetText.text += (i + 1) + ":" + sort[i].ToString("D5") + "\n";
+				rankingText.text += (i + 1) + ":" + sort[i].ToString("D5") + "\n";
 				PlayerPrefs.SetInt("" + i, sort[i]);
 			}
 		}
 		PlayerPrefs.Save();
+	}
+
+	private void getRanking()
+	{
+		var request = new GetLeaderboardRequest
+		{
+			StatisticName = "Score",
+			StartPosition = 0, // 何位以降のランキングを取得するか指定
+			MaxResultsCount = 6, // 最大件数
+		};
+		PlayFabClientAPI.GetLeaderboard(request, showRanking, OnError);
+	}
+
+	void showRanking(GetLeaderboardResult result)
+	{
+		rankingText.text += "Ranking\n";
+		foreach (var item in result.Leaderboard)
+		{
+			rankingText.text += $"{item.Position + 1}位: {item.DisplayName} - {item.StatValue}\n";
+		}
+	}
+
+	private void sendScore()
+	{
+		var data = new StatisticUpdate
+		{
+			StatisticName = "Score",
+			Value = GameManager.instance.Score,
+		};
+
+		var request = new UpdatePlayerStatisticsRequest
+		{
+			Statistics = new List<StatisticUpdate>
+			{
+				data
+			}
+		};
+
+		PlayFabClientAPI.UpdatePlayerStatistics(request, OnSuccess, OnError);
+
+		void OnSuccess(UpdatePlayerStatisticsResult result)
+		{
+			Debug.Log("result = " + result);
+		}
+	}
+	private void setUserName(string userName)
+	{
+		var request = new UpdateUserTitleDisplayNameRequest
+		{
+			DisplayName = userName
+		};
+
+		PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnSuccess, OnError);
+	}
+
+	void OnSuccess(UpdateUserTitleDisplayNameResult result)
+	{
+		Debug.Log("Update success " + result);
+	}
+
+	void OnError(PlayFabError error)
+	{
+		Debug.Log($"error :{error}");
 	}
 }
