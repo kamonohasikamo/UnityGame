@@ -57,22 +57,8 @@ public class onPressOkButton : MonoBehaviour
 
 	private void setUserName()
 	{
-		PlayFabClientAPI.UpdateUserData(
-			new UpdateUserDataRequest
-			{
-				Data = new Dictionary<string, string>()
-				{
-					{"Name", playerName},
-					{"Score", "0"},
-				}
-			},
-			result =>
-			{
-				PlayerPrefs.SetString("Name", playerName);
-				SceneManager.LoadScene("Game");
-			},
-			Error
-		);
+		PlayerPrefs.SetString("Name", playerName);
+		SceneManager.LoadScene("Game");
 	}
 
 	private void Error(PlayFabError error)

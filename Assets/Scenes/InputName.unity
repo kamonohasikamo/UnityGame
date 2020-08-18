@@ -775,6 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputNameField: {fileID: 1450033288}
+  errorText: {fileID: 0}
 --- !u!1 &705714558
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +847,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Your Name
 
-    Please input 4 characters or less'
+    Please input 6 characters or less'
 --- !u!222 &705714561
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1205,7 +1206,7 @@ MonoBehaviour:
   m_LineType: 2
   m_HideMobileInput: 0
   m_CharacterValidation: 0
-  m_CharacterLimit: 4
+  m_CharacterLimit: 6
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []

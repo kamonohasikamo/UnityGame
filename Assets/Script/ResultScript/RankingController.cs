@@ -45,11 +45,13 @@ public class RankingController : MonoBehaviour
 		if (WorldOrMyScore.WorldOrMyScoreNum % 2 == 0)
 		{
 			this.gameObject.GetComponentInChildren<Text>().text = "MyScore";
+			rankingText.fontSize = 60;
 			getRanking();
 		}
 		else
 		{
 			this.gameObject.GetComponentInChildren<Text>().text = "World";
+			rankingText.fontSize = 80;
 			showRanking();
 		}
 		WorldOrMyScore.addChangeNum();
@@ -111,7 +113,7 @@ public class RankingController : MonoBehaviour
 		{
 			StatisticName = "Score",
 			StartPosition = 0, // 何位以降のランキングを取得するか指定
-			MaxResultsCount = 6, // 最大件数
+			MaxResultsCount = 8, // 最大件数
 		};
 		PlayFabClientAPI.GetLeaderboard(request, showRanking, OnError);
 	}
@@ -145,7 +147,7 @@ public class RankingController : MonoBehaviour
 
 		void OnSuccess(UpdatePlayerStatisticsResult result)
 		{
-			Debug.Log("result = " + result);
+			// Debug.Log("result = " + result);
 		}
 	}
 	private void setUserName(string userName)
@@ -160,11 +162,11 @@ public class RankingController : MonoBehaviour
 
 	void OnSuccess(UpdateUserTitleDisplayNameResult result)
 	{
-		Debug.Log("Update success " + result);
+		// Debug.Log("Update success " + result);
 	}
 
 	void OnError(PlayFabError error)
 	{
-		Debug.Log($"error :{error}");
+		// Debug.Log($"error :{error}");
 	}
 }
