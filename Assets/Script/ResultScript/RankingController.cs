@@ -27,9 +27,11 @@ public class RankingController : MonoBehaviour
 	// sort用配列
 	private int[] sort = new int[5];
 	private int tmp = 0;
+	public bool isFirst;
 
 	void Start()
 	{
+		isFirst = false;
 		WorldOrMyScore.WorldOrMyScoreNum = 0;
 		playerName = PlayerPrefs.GetString("Name");
 		rankingText.text = "";
@@ -69,21 +71,24 @@ public class RankingController : MonoBehaviour
 	void showRanking()
 	{
 		rankingText.text += "Ranking\n";
-		for (int i = 0; i < 5; i++)
+		if (!isFirst)
 		{
-			sort[i] = PlayerPrefs.GetInt("" + i, 0);
-		}
-
-		// sort配列の中身を降順ソートする
-		for (int start = 1; start < sort.Length; start++)
-		{
-			for (int end = sort.Length - 1; end >= start; end--)
+			for (int i = 0; i < 5; i++)
 			{
-				if (sort[end - 1] <= sort[end])
+				sort[i] = PlayerPrefs.GetInt("" + i, 0);
+			}
+
+			// sort配列の中身を降順ソートする
+			for (int start = 1; start < sort.Length; start++)
+			{
+				for (int end = sort.Length - 1; end >= start; end--)
 				{
-					tmp = sort[end - 1];
-					sort[end - 1] = sort[end];
-					sort[end] = tmp;
+					if (sort[end - 1] <= sort[end])
+					{
+						tmp = sort[end - 1];
+						sort[end - 1] = sort[end];
+						sort[end] = tmp;
+					}
 				}
 			}
 		}
@@ -95,25 +100,35 @@ public class RankingController : MonoBehaviour
 			if (showNowScoreFlag && GameManager.instance.Score == sort[i])
 			{
 				rankingText.text += "<color=red>" + (i + 1) + ":" + sort[i].ToString("D5") + "</color>\n";
-				PlayerPrefs.SetInt("" + i, sort[i]);
+				if (!isFirst)
+				{
+					PlayerPrefs.SetInt("" + i, sort[i]);
+				}
 				showNowScoreFlag = false;
 			}
 			else
 			{
 				rankingText.text += (i + 1) + ":" + sort[i].ToString("D5") + "\n";
-				PlayerPrefs.SetInt("" + i, sort[i]);
+				if (!isFirst)
+				{
+					PlayerPrefs.SetInt("" + i, sort[i]);
+				}
 			}
 		}
-		PlayerPrefs.Save();
+		if (!isFirst)
+		{
+			PlayerPrefs.Save();
+			isFirst = true;
+		}
 	}
 
 	private void getRanking()
 	{
 		var request = new GetLeaderboardRequest
 		{
-			StatisticName = "Score",
+			StatisticName = Define.RANKING_NAME,
 			StartPosition = 0, // 何位以降のランキングを取得するか指定
-			MaxResultsCount = 8, // 最大件数
+			MaxResultsCount = 5, // 最大件数
 		};
 		PlayFabClientAPI.GetLeaderboard(request, showRanking, OnError);
 	}
@@ -129,9 +144,13 @@ public class RankingController : MonoBehaviour
 
 	private void sendScore()
 	{
+		if (GameManager.instance.getIsCheat())
+		{
+			return;
+		}
 		var data = new StatisticUpdate
 		{
-			StatisticName = "Score",
+			StatisticName = Define.RANKING_NAME,
 			Value = GameManager.instance.Score,
 		};
 
