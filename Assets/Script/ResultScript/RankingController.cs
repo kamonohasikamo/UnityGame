@@ -166,7 +166,7 @@ public class RankingController : MonoBehaviour
 
 		void OnSuccess(UpdatePlayerStatisticsResult result)
 		{
-			// Debug.Log("result = " + result);
+
 		}
 	}
 	private void setUserName(string userName)
@@ -181,11 +181,11 @@ public class RankingController : MonoBehaviour
 
 	void OnSuccess(UpdateUserTitleDisplayNameResult result)
 	{
-		// Debug.Log("Update success " + result);
+
 	}
 
 	void OnError(PlayFabError error)
 	{
-		// Debug.Log($"error :{error}");
+		
 	}
 }
