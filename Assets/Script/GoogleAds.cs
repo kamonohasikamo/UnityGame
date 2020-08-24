@@ -22,7 +22,7 @@ public class GoogleAds : MonoBehaviour
 		//string adUnitId = "ca-app-pub-3940256099942544/6300978111";
 		string adUnitId = "";
 		// Create a 320x50 banner at the top of the screen.
-		BannerView bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
+		BannerView bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
 
 		// Create an empty ad request.
 		AdRequest request = new AdRequest.Builder().Build();
