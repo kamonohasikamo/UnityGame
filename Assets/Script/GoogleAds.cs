@@ -7,7 +7,7 @@ public class GoogleAds : MonoBehaviour {
 	void Start () {
 		// アプリID
 		// string appId = "ca-app-pub-3940256099942544~334751171";
-		string appId = "ca-app-pub-1330827523203149~4606801216";
+		string appId = "";
 		// Initialize the Google Mobile Ads SDK.
 		MobileAds.Initialize(appId);
 
@@ -16,7 +16,7 @@ public class GoogleAds : MonoBehaviour {
 	private void RequestBanner(){
 		// 広告ユニットID
 		//string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-		string adUnitId = "ca-app-pub-1330827523203149/6826411079";
+		string adUnitId = "";
 		// Create a 320x50 banner at the top of the screen.
 		BannerView bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
 
