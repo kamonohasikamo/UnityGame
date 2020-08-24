@@ -31,6 +31,7 @@ public class RankingController : MonoBehaviour
 
 	void Start()
 	{
+		GameManager.instance.Banner.Hide();
 		isFirst = false;
 		WorldOrMyScore.WorldOrMyScoreNum = 0;
 		playerName = PlayerPrefs.GetString("Name");
@@ -186,6 +187,6 @@ public class RankingController : MonoBehaviour
 
 	void OnError(PlayFabError error)
 	{
-		
+
 	}
 }
