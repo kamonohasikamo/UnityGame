@@ -49,6 +49,7 @@ public class DescriptionMaster : MonoBehaviour
 
 	void Start()
 	{
+		GameManager.instance.Banner.Hide();
 		dataText = this.gameObject.GetComponent<Text>();
 		// String型としてマスタデータの読み込み
 		string inputString = Resources.Load<TextAsset>(MASTER_FILE_PATH).ToString();
