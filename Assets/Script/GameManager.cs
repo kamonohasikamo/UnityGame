@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GoogleMobileAds.Api;
 public class GameManager : MonoBehaviour
 {
 	//=============================================
@@ -27,6 +27,20 @@ public class GameManager : MonoBehaviour
 		score = (gameMinute * 60 + (int)gameSeconds) * 100 + itemUseCount * 100 - (int)playerFlyTime;
 	}
 
+	public BannerView bannerView;
+
+	public BannerView Banner
+	{
+		set
+		{
+			bannerView = value;
+		}
+		get
+		{
+			return bannerView;
+		}
+	}
+
 	//=============================================
 	// use CreateBlockController variable
 	//=============================================
@@ -48,7 +62,7 @@ public class GameManager : MonoBehaviour
 
 	// Block の横サイズ
 	private static int blockHorizontalLength = 10;
-	
+
 	public int BlockHorizontalLength
 	{
 		set
@@ -275,12 +289,12 @@ public class GameManager : MonoBehaviour
 
 	public int getPlayerStatus()
 	{
-			return playerStatus;
+		return playerStatus;
 	}
 
 	public void setPlayerStatus(int setValue)
 	{
-			playerStatus = setValue;
+		playerStatus = setValue;
 	}
 	// Player Cheat Flag
 	public bool isCheat = false;

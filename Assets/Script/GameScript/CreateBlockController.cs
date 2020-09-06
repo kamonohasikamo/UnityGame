@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GoogleMobileAds.Api;
 public class CreateBlockController : MonoBehaviour
 {
 	// ブロック初期x座標
@@ -52,6 +52,7 @@ public class CreateBlockController : MonoBehaviour
 
 	void gameInit()
 	{
+		GameManager.instance.Banner.Hide();
 		GameManager.instance.BlockHorizontalLength = 10;
 		GameManager.instance.BlockMaxHeight = 8;
 		GameManager.instance.MaxWave = 5;
@@ -105,11 +106,11 @@ public class CreateBlockController : MonoBehaviour
 		{
 			GameManager.instance.setWaveMoveSpeed(5.0f);
 		}
-		else if(GameManager.instance.getGameTotalSeconds() >= 120 && GameManager.instance.getGameTotalSeconds() < 150)
+		else if (GameManager.instance.getGameTotalSeconds() >= 120 && GameManager.instance.getGameTotalSeconds() < 150)
 		{
 			GameManager.instance.setWaveMoveSpeed(6.0f);
 		}
-		else if(GameManager.instance.getGameTotalSeconds() >= 150 && GameManager.instance.getGameTotalSeconds() < 180)
+		else if (GameManager.instance.getGameTotalSeconds() >= 150 && GameManager.instance.getGameTotalSeconds() < 180)
 		{
 			GameManager.instance.setWaveMoveSpeed(7.5f);
 		}
@@ -145,8 +146,8 @@ public class CreateBlockController : MonoBehaviour
 		{
 			createSpace = 0.0f;
 		}
-		
-		switch(colorSelect)
+
+		switch (colorSelect)
 		{
 			// red
 			case 0:
@@ -162,7 +163,7 @@ public class CreateBlockController : MonoBehaviour
 					setAboveItem((float)i + createSpace, blockHeight, tmpParentObj);
 
 					GameObject tmpObject = Instantiate(redBlockObject, new Vector2(setBlockFirstXPoint + (float)i + createSpace, scaleY - 4.5f), Quaternion.identity) as GameObject;
-					
+
 					tmpObject.transform.parent = tmpParentObj.transform;
 				}
 				break;
@@ -180,7 +181,7 @@ public class CreateBlockController : MonoBehaviour
 					setAboveItem((float)i + createSpace, blockHeight, tmpParentObj);
 
 					GameObject tmpObject = Instantiate(blueBlockObject, new Vector2(setBlockFirstXPoint + (float)i + createSpace, scaleY - 4.5f), Quaternion.identity) as GameObject;
-					
+
 					tmpObject.transform.parent = tmpParentObj.transform;
 				}
 				break;
@@ -209,8 +210,8 @@ public class CreateBlockController : MonoBehaviour
 	void setAboveItem(float setPosX_i, int blockHeight, GameObject parent)
 	{
 		isSetBlockAbove = randamVariable.Next(0, 10);
-		float scaleY = (blockHeight == 1)? - 3.7f : -3.7f + (float)(blockHeight - 1);
-		if(isSetBlockAbove == 7 || isSetBlockAbove == 8)
+		float scaleY = (blockHeight == 1) ? -3.7f : -3.7f + (float)(blockHeight - 1);
+		if (isSetBlockAbove == 7 || isSetBlockAbove == 8)
 		{
 			setColorRandomNum = randamVariable.Next(0, 3);
 			setBlockAboveItem = (GameObject)Resources.Load(setItemPath[setColorRandomNum]);
